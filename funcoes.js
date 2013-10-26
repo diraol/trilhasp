@@ -34,3 +34,10 @@ var descoloreEstrelasPosteriores = function(indiceStar, span, indiceAvaliacao) {
 var enableSalvar = function() {
     document.getElementById('salvar').className = "btn btn-lg btn-primary btn-block";
 }
+
+var getNotaAvaliacao = function(idAvaliacao) {
+    var estrelasSelecionadas  = document.getElementById('avaliacao-' + idAvaliacao).getElementsByClassName('glyphicon-star');
+    var size = estrelasSelecionadas.length;
+    var ultimaEstrelaSelecionada = estrelasSelecionadas.item(size-1);
+    return (ultimaEstrelaSelecionada  === null)? 0 : ultimaEstrelaSelecionada.id.charAt(5);  ultimaEstrelaSelecionada = document.getElementById('avaliacao-' + idAvaliacao).getElementsByClassName('glyphicon-star').item(this.length-1);
+}
