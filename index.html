@@ -28,15 +28,31 @@
 
   <body>
 
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="index.html">Trilha #SP</a>
+        </div>
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Login</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
     <div class="container">
 
       <form class="form-signin">
         <h1 class="form-signin-heading">Login Trilha #SP</h1>
           <input type="text" class="form-control" placeholder="e-mail" required autofocus>
           <input type="password" class="form-control" placeholder="senha" required>
-          <label class="checkbox">
-            <input type="checkbox" value="remember-me"> Não Perguntar novamente
-          </Label>
+          
           <button class="btn btn-lg btn-primary btn-block" type="submit">Login Facebook</button>
           <h2 class="text-center">Ou</h2>
           <div>
