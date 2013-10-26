@@ -34,7 +34,9 @@
         </div>
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Login</a></li>
+	    <li><a href="index.html">Login</a></li>
+            <li><a href="cadastro.html">Cadastro</a></li>
+	    <li class="active"><a href="cadastro-erro.html">Erro no Cadastro</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -43,15 +45,12 @@
     <div class="container">
       
       <form class="form-signin">
-        <h1 class="form-signin-heading">Login Trilha #SP</h1>
-        <input type="text" class="form-control" placeholder="e-mail" required autofocus>
-        <input type="password" class="form-control" placeholder="senha" required>
+        <h1 class="form-signin-heading">Erro no Cadastro</h1>
+	<div class="alert alert-danger">
+	  Houve um erro no seu cadastro. Volte à etapa anterior e tente novamente.
+	</div>
 	
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Login Facebook</button>
-        <button class="btn btn-lg btn-success btn-block" type="submit">Login Trilha #SP</button>
-      </form>
-      <form class="form-signin">
-        <button class="btn btn-lg btn-warning btn-block" type="submit"><a href="cadastro.html">Cadastro Trilha #SP</a></button>
+	<button class="btn btn-lg btn-danger btn-block" type="submit"><a href="cadastro.html">Refazer Cadastro</a></button>
       </form>
     </div> <!-- /container -->
     

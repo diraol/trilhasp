@@ -5,6 +5,10 @@
    border:none;
 }
 
+.btn a:visited {
+    color:white;
+}
+
 body {
   padding-top: 40px;
   padding-bottom: 40px;
