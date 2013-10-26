@@ -67,32 +67,64 @@
 <!-- Inicio avaliacao collapse1 -->
 	<div>
 	  <div class="col-sm-offset-1 col-xs-2">
-	    <button type="button"  class="btn btn-star btn-default btn-lg">
-	      <span class="glyphicon glyphicon-star-empty"></span>
+	    <button id="star-1" onclick="saveAvaliacao(this.id)" type="button"  class="btn btn-star btn-default btn-lg">
+	      <span id="star-1-span" class="glyphicon glyphicon-star-empty"></span>
+	    </button>
+	  </div>
+
+	  <script>
+	    var saveAvaliacao = function (id) {
+	      var callee = id.toString();
+	      var botao = document.getElementById(id);
+	      var span = document.getElementById(id + '-span');
+	      var indiceStar = id.charAt(5);
+
+	      coloreEstrelasAnteriores (indiceStar, span);
+	      descoloreEstrelasPosteriores (indiceStar, span);
+	    }
+
+	    var coloreEstrelasAnteriores = function (indiceStar, span) {
+              span.className = "glyphicon glyphicon-star";
+	      if (indiceStar > '1'){
+	        var nextIndiceStar = indiceStar - 1;
+	        var nextSpan = document.getElementById('star-' + nextIndiceStar + '-span');
+
+	        coloreEstrelasAnteriores(nextIndiceStar, nextSpan);
+	      }
+	    }
+
+	    var descoloreEstrelasPosteriores = function(indiceStar, span) {
+	      if (indiceStar < '5') {
+		var nextIndiceStar = parseInt(indiceStar,10) + 1;
+	        var nextSpan = document.getElementById('star-' + nextIndiceStar + '-span');
+		nextSpan.className = "glyphicon glyphicon-star-empty";
+
+		descoloreEstrelasPosteriores(nextIndiceStar, nextSpan);
+	      }
+	    }
+	  </script>
+	  
+	  <div class="col-xs-2">
+	    <button id="star-2" onclick="saveAvaliacao(this.id)" type="button"  class="btn btn-star btn-default btn-lg">
+	      <span id="star-2-span" class="glyphicon glyphicon-star-empty"></span>
 	    </button>
 	  </div>
 	  
 	  <div class="col-xs-2">
-	    <button type="button"  class="btn btn-star btn-default btn-lg">
-	    <span class="glyphicon glyphicon-star-empty"></span>
+	    <button id="star-3" onclick="saveAvaliacao(this.id)" type="button"  class="btn btn-star btn-default btn-lg">
+	      <span id="star-3-span" class="glyphicon glyphicon-star-empty"></span>
 	    </button>
 	  </div>
 	  
 	  <div class="col-xs-2">
-	    <button type="button"  class="btn btn-star btn-default btn-lg">
-	      <span class="glyphicon glyphicon-star-empty"></span>
+	    <button id="star-4" onclick="saveAvaliacao(this.id)" type="button"  class="btn btn-star btn-default btn-lg">
+	      <span id="star-4-span" class="glyphicon glyphicon-star-empty"></span>
 	    </button>
 	  </div>
 	  
 	  <div class="col-xs-2">
-	    <button type="button"  class="btn btn-star btn-default btn-lg">
-	      <span class="glyphicon glyphicon-star-empty"></span>
-	    </button>
-	  </div>
-	  
-	  <div class="col-xs-2">
-	    <button type="button"  class="btn btn-star btn-default btn-lg">
-	      <span class="glyphicon glyphicon-star-empty"></span>
+	    <button id="star-5" onclick="saveAvaliacao(this.id)" type="button"  class="btn btn-star btn-default btn-lg">
+	      <span id="star-5-span" class="glyphicon glyphicon-star-empty"></span>
 	    </button>
 	  </div>
         </div>
