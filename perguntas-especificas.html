@@ -15,10 +15,6 @@
 
     <!-- Custom styles for this template -->
     <link href="signin.css" rel="stylesheet">
-
-    <!-- JavaScript -->
-    <script type="text/javascript" src="dist/js/jquery-1.10.2.min.js"></script>
-    <script type="text/javascript" src="dist/js/bootstrap.js"></script>
   </head>
 
   <body>
@@ -72,39 +68,6 @@
 	    </button>
 	  </div>
 
-	  <script>
-	    var saveAvaliacao = function (id) {
-	      var callee = id.toString();
-	      var botao = document.getElementById(id);
-	      var indiceAvaliacao = botao.parentNode.parentNode.id.slice(-1); 
-	      var indiceStar = id.charAt(5);
-	      var span = document.getElementById('star-' + indiceStar + '-span-avaliacao-' + indiceAvaliacao);
-
-	      coloreEstrelasAnteriores (indiceStar, span, indiceAvaliacao);
-	      descoloreEstrelasPosteriores (indiceStar, span, indiceAvaliacao);
-	    }
-
-	    var coloreEstrelasAnteriores = function (indiceStar, span, indiceAvaliacao) {
-              span.className = "glyphicon glyphicon-star";
-	      if (indiceStar > '1'){
-	        var nextIndiceStar = indiceStar - 1;
-	        var nextSpan = document.getElementById('star-' + nextIndiceStar + '-span-avaliacao-' + indiceAvaliacao);
-
-	        coloreEstrelasAnteriores(nextIndiceStar, nextSpan, indiceAvaliacao);
-	      }
-	    }
-
-	    var descoloreEstrelasPosteriores = function(indiceStar, span, indiceAvaliacao) {
-	      if (indiceStar < '5') {
-		var nextIndiceStar = parseInt(indiceStar,10) + 1;
-	        var nextSpan = document.getElementById('star-' + nextIndiceStar + '-span-avaliacao-' + indiceAvaliacao);
-		nextSpan.className = "glyphicon glyphicon-star-empty";
-
-		descoloreEstrelasPosteriores(nextIndiceStar, nextSpan, indiceAvaliacao);
-	      }
-	    }
-	  </script>
-	  
 	  <div class="col-xs-2">
 	    <button id="star-2-avaliacao-1" onclick="saveAvaliacao(this.id)" type="button"  class="btn btn-star btn-default btn-lg">
 	      <span id="star-2-span-avaliacao-1" class="glyphicon glyphicon-star-empty"></span>
@@ -249,5 +212,8 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/javascript" src="dist/js/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="dist/js/bootstrap.js"></script>
+    <script type="text/javascript" src="estrelas.js"></script>
   </body>
 </html>
