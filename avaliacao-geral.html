@@ -46,39 +46,39 @@
 
       <form class="form-signin">
         <h1>Avaliação Geral do Ônibus</h1>
-	<div>
+	<div id="avaliacao-1">
 	  <div class="col-sm-offset-1 col-xs-2">
-	    <button type="button"  class="btn btn-star btn-default btn-lg">
-	      <span class="glyphicon glyphicon-star-empty"></span>
+	    <button id="star-1-avaliacao-1" onclick="saveAvaliacao(this.id)" type="button"  class="btn btn-star btn-default btn-lg">
+	      <span id="star-1-span-avaliacao-1" class="glyphicon glyphicon-star-empty"></span>
 	    </button>
 	  </div>
 	  
 	  <div class="col-xs-2">
-	    <button type="button"  class="btn btn-star btn-default btn-lg">
-	    <span class="glyphicon glyphicon-star-empty"></span>
+	    <button id="star-2-avaliacao-1" onclick="saveAvaliacao(this.id)" type="button"  class="btn btn-star btn-default btn-lg">
+	      <span id="star-2-span-avaliacao-1" class="glyphicon glyphicon-star-empty"></span>
 	    </button>
 	  </div>
 	  
 	  <div class="col-xs-2">
-	    <button type="button"  class="btn btn-star btn-default btn-lg">
-	      <span class="glyphicon glyphicon-star-empty"></span>
+	    <button id="star-3-avaliacao-1" onclick="saveAvaliacao(this.id)" type="button"  class="btn btn-star btn-default btn-lg">
+	      <span id="star-3-span-avaliacao-1" class="glyphicon glyphicon-star-empty"></span>
 	    </button>
 	  </div>
 	  
 	  <div class="col-xs-2">
-	    <button type="button"  class="btn btn-star btn-default btn-lg">
-	      <span class="glyphicon glyphicon-star-empty"></span>
+	    <button id="star-4-avaliacao-1" onclick="saveAvaliacao(this.id)" type="button"  class="btn btn-star btn-default btn-lg">
+	      <span id="star-4-span-avaliacao-1" class="glyphicon glyphicon-star-empty"></span>
 	    </button>
 	  </div>
 	  
 	  <div class="col-xs-2">
-	    <button type="button"  class="btn btn-star btn-default btn-lg">
-	      <span class="glyphicon glyphicon-star-empty"></span>
+	    <button id="star-5-avaliacao-1" onclick="saveAvaliacao(this.id)" type="button"  class="btn btn-star btn-default btn-lg">
+	      <span id="star-5-span-avaliacao-1" class="glyphicon glyphicon-star-empty"></span>
 	    </button>
 	  </div>
 
 	  <div style="padding-top:30px;">
-	    <button class="btn btn-lg btn-primary btn-block" style="margin-top: 30px;" type="submit">Continuar</button>
+	    <a id="continuar" class="btn btn-lg btn-primary btn-block disabled" style="margin-top:30px;" href="perguntas-especificas.html">Continuar</a>
 	  </div>
 	</div>
       </form>
@@ -94,4 +94,5 @@
     <!-- JavaScript -->
     <script type="text/javascript" src="dist/js/jquery-1.10.2.min.js"></script>
     <script type="text/javascript" src="dist/js/bootstrap.js"></script>
+    <script type="text/javascript" src="funcoes.js"></script>
 </html>

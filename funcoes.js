@@ -8,7 +8,7 @@ var saveAvaliacao = function (id) {
     coloreEstrelasAnteriores (indiceStar, span, indiceAvaliacao);
     descoloreEstrelasPosteriores (indiceStar, span, indiceAvaliacao);
 
-    enableSalvar();
+    enableSalvarOuContinuar();
 }
 
 var coloreEstrelasAnteriores = function (indiceStar, span, indiceAvaliacao) {
@@ -31,8 +31,13 @@ var descoloreEstrelasPosteriores = function(indiceStar, span, indiceAvaliacao) {
     }
 }
 
-var enableSalvar = function() {
-    document.getElementById('salvar').className = "btn btn-lg btn-primary btn-block";
+var enableSalvarOuContinuar = function() {
+    var botaoSalvar = document.getElementById('salvar');
+    var botaoContinuar = document.getElementById('continuar');
+    if (botaoSalvar !== null) 
+	botaoSalvar.className = "btn btn-lg btn-primary btn-block";
+    else if (botaoContinuar !== null)
+	botaoContinuar.className = "btn btn-lg btn-primary btn-block";
 }
 
 var getNotaAvaliacao = function(idAvaliacao) {
