@@ -7,6 +7,8 @@ var saveAvaliacao = function (id) {
     
     coloreEstrelasAnteriores (indiceStar, span, indiceAvaliacao);
     descoloreEstrelasPosteriores (indiceStar, span, indiceAvaliacao);
+
+    enableSalvar();
 }
 
 var coloreEstrelasAnteriores = function (indiceStar, span, indiceAvaliacao) {
@@ -29,3 +31,6 @@ var descoloreEstrelasPosteriores = function(indiceStar, span, indiceAvaliacao) {
     }
 }
 
+var enableSalvar = function() {
+    document.getElementById('salvar').className = "btn btn-lg btn-primary btn-block";
+}
