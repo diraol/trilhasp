@@ -1,62 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="shortcut icon" href="../../docs-assets/ico/favicon.png">
+{% extends "base.html" %}
 
-    <title>Trilha #SP</title>
+{% block menu %}
+    <li><a href="/login">Login</a></li>
+    <li class="active"><a href="/cadastro">Cadastro</a></li>
+{% endblock menu %}
 
-    <!-- Bootstrap core CSS -->
-    <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="style.css" rel="stylesheet">
-    
-  </head>
-
-  <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="index.html">Trilha #SP</a>
-        </div>
-        <div class="collapse navbar-collapse">
-          <ul class="nav navbar-nav">
-	    <li><a href="index.html">Login</a></li>
-            <li class="active"><a href="cadastro.html">Cadastro</a></li>
-          </ul>
-        </div><!--/.nav-collapse -->
-      </div>
-    </div>
-
-    <div class="container">
-      
-      <form class="form-signin">
+{% block mainContent %}
+    {% if errors %}
+	    <div class="alert alert-danger">
+            {% for e in errors %}
+                {{ e }}<br/>
+            {% endfor %}
+	    </div>
+    {% endif %}
+    <form class="form-signin" action="/cadastrar/" method="post">
+        {% csrf_token %}
         <h1 class="form-signin-heading">Cadastro Trilha #SP</h1>
-	<input type="text" class="form-control" placeholder="Nome" required autofocus>
-        <input type="text" class="form-control" placeholder="e-mail" required>
-        <input type="password" class="form-control" placeholder="senha" required>
-	
+	    <input type="text" class="form-control" placeholder="Nome" required autofocus name="username">
+        <input type="text" class="form-control" placeholder="e-mail" required name="email">
+        <input type="password" class="form-control" placeholder="senha" required name="password">
         <button class="btn btn-lg btn-primary btn-block" type="submit">Criar Cadastro</button>
-      </form>
-    </div> <!-- /container -->
-    
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-  </body>
-  
-  
-    <!-- JavaScript -->
-    <script type="text/javascript" src="bootstrap/js/jquery-1.10.2.min.js"></script>
-    <script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
-</html>
+    </form>
+{% endblock mainContent %}
+      

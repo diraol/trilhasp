@@ -6,6 +6,8 @@ import sys
 PROJECT_ROOT = os.path.join(os.path.dirname(__file__), '..')
 SITE_ROOT = PROJECT_ROOT
 
+LOGIN_URL = "/login/"
+
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 

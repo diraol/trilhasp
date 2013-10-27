@@ -26,22 +26,8 @@ from django.contrib import admin
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 admin.autodiscover()
 
+
 urlpatterns = patterns('',
-    # Examples:
-    url(r'^$', 'trilhasp.views.index', name='index'),
-    url(r'^login$', 'trilhasp.views.loginpage', name='loginpage'),
-    url(r'^cadastro$', 'trilhasp.views.cadastro', name='cadastro'),
-    url(r'^avaliar$', 'trilhasp.views.avaliar', name='avaliar'),
-    url(r'^avaliar/especificas$', 'trilhasp.views.especificas', name='especificas'),
-    url(r'^perfil$', 'trilhasp.views.perfil', name='perfil'),
-    # url(r'^trilhasp/', include('trilhasp.foo.urls')),
-    url(r'', include('modelagem.urls')),
-
-    # Uncomment the admin/doc line below to enable admin documentation:
-    #url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
-
-    # Uncomment the next line to enable the admin:
-    url(r'^admin/', include(admin.site.urls)),
-)+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-
-urlpatterns += staticfiles_urlpatterns()
+    url(r'^cadastrar/$', 'modelagem.views.cadastrar', name='cadastrar'),
+    url(r'^dologin$', 'modelagem.views.dologin', name='dologin'),
+)

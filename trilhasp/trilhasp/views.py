@@ -20,7 +20,7 @@
 from __future__ import unicode_literals
 from django.contrib.auth.models import User
 from django.template import RequestContext
-from django.http import HttpResponse
+from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response, get_object_or_404, get_list_or_404, redirect
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
@@ -29,17 +29,24 @@ from django.shortcuts import render
 def index(request):
     return render(request, 'base.html', {})
 
-def login(request):
+def loginpage(request):
     return render(request, 'login.html', {})
 
 def cadastro(request):
     return render(request, 'cadastro.html', {})
 
-def escolhelinha(request):
-    return render(request, 'escolhe-linha.html', {})
+#@login_required(login_url='/login/')
+def avaliar(request):
+    if not request.user.is_authenticated():
+        return HttpResponseRedirect('/login')
+    return render(request, 'avaliar.html', {})
 
 def perfil(request):
+    if not request.user.is_authenticated():
+        return HttpResponseRedirect('/login')
     return render(request, 'perfil.html', {})
 
-def avaliaespec(request):
+def especificas(request):
+    if not request.user.is_authenticated():
+        return HttpResponseRedirect('/login')
     return render(request, 'perguntas_especificas.html', {})
