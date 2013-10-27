@@ -1,3 +1,23 @@
+.btn-noborder {
+    border:none;
+    background:transparent !important;
+ }
+
+.btn-moeda, disabled{
+    opacity:1.0 !important;
+}
+
+.onibus-x {
+    margin-bottom:30px;
+    font-size: 16px;
+}
+
+.onibus-x-title {
+    margin-bottom:30px;
+    font-size:18px;
+    color:grey;
+}
+
 .btn-star {
    -webkit-border-radius: 20px;
    -moz-border-radius: 20px;
