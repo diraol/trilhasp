@@ -1,3 +1,7 @@
+#avaliacao-geral {
+    visibility:hidden;
+}
+
 .btn-noborder {
     border:none;
     background:transparent !important;

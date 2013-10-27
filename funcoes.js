@@ -48,8 +48,5 @@ var getNotaAvaliacao = function(idAvaliacao) {
 }
 
 var avaliacaoGeral = function() {
-    var element  = document.getElementById('avaliacao-geral'); 
-    element.style.display = 'visible';
-    console.log(element.style.display);
-
+    document.getElementById('avaliacao-geral').style.visibility = 'visible'; 
 }
