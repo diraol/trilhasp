@@ -55,7 +55,7 @@
 	  <div class="panel panel-default">
 	    <div class="panel-heading">
 	      <h4 class="panel-title">
-		<a class="accordion-toggle" data-toggle="collapse" data-target="#collapseOne" href="#collapseOne">
+		<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
 		  Lotação
 		</a>
 	      </h4>
@@ -69,6 +69,7 @@
 $(document).ready(function(){
    
     $('#slider-1').slider({
+        value:50,
         slide:function(event, ui){
             console.log(ui.value);
         }
@@ -87,7 +88,7 @@ $(document).ready(function(){
 	  <div class="panel panel-default">
 	    <div class="panel-heading">
 	      <h4 class="panel-title">
-		<a class="accordion-toggle" data-toggle="collapse" data-target="#collapseTwo" href="#collapseTwo">
+		<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
 		  Conforto Térmico
 		</a>
 	      </h4>
@@ -101,6 +102,7 @@ $(document).ready(function(){
 		    $(document).ready(function(){
 		    
 		    $('#slider-2').slider({
+        value:50,
 		    slide:function(event, ui){
 		    console.log(ui.value);
 		    }
@@ -120,7 +122,7 @@ $(document).ready(function(){
 	  <div class="panel panel-default">
 	    <div class="panel-heading">
 	      <h4 class="panel-title">
-		<a class="accordion-toggle" data-toggle="collapse" data-target="#collapseThree" href="#collapseThree">
+		<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
 		  Higiene
 		</a>
 	      </h4>
@@ -134,6 +136,7 @@ $(document).ready(function(){
 		    $(document).ready(function(){
 		    
 		    $('#slider-3').slider({
+        value:50,
 		    slide:function(event, ui){
 		    console.log(ui.value);
 		    }
@@ -153,7 +156,7 @@ $(document).ready(function(){
 	  <div class="panel panel-default">
 	    <div class="panel-heading">
 	      <h4 class="panel-title">
-		<a class="accordion-toggle" data-toggle="collapse" data-target="#collapseFour" href="#collapseFour">
+		<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseFour">
 		  Atendimento do Motorista
 		</a>
 	      </h4>
@@ -167,6 +170,7 @@ $(document).ready(function(){
 $(document).ready(function(){
    
     $('#slider-4').slider({
+        value:50,
         slide:function(event, ui){
             console.log(ui.value);
         }
@@ -186,7 +190,7 @@ $(document).ready(function(){
 	  <div class="panel panel-default">
 	    <div class="panel-heading">
 	      <h4 class="panel-title">
-		<a class="accordion-toggle" data-toggle="collapse" data-target="#collapseFive" href="#collapseFive">
+		<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseFive">
 		  Atendimento do Cobrador
 		</a>
 	      </h4>
@@ -200,6 +204,7 @@ $(document).ready(function(){
 $(document).ready(function(){
    
     $('#slider-5').slider({
+        value:50,
         slide:function(event, ui){
             console.log(ui.value);
         }
