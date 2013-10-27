@@ -7,6 +7,15 @@
     border-style:none; 
 }
 
+.reclamacao {
+    margin-top:30px;
+    color:grey;
+}
+
+#reclamacao-1 {
+display:none;
+}
+
 #avaliacao-geral {
     visibility:hidden;
 }

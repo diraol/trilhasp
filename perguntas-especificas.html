@@ -11,7 +11,7 @@
     <title>Trilha #SP</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="dist/css/bootstrap.css" rel="stylesheet">
+    <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="style.css" rel="stylesheet">
@@ -20,7 +20,7 @@
 <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
 <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 
-    <script type="text/javascript" src="dist/js/bootstrap.js"></script>
+    <script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
     <script type="text/javascript" src="funcoes.js"></script>
   </head>
 
@@ -65,22 +65,31 @@
 		<!-- Inicio avaliacao collapse1 -->
 		<div id="avaliacao-1">
 		  <div id="slider-1"></div>
-<script>
-$(document).ready(function(){
-   
-    $('#slider-1').slider({
-        value:50,
-        slide:function(event, ui){
-            console.log(ui.value);
-        }
-    });
-});
-</script>
+		  <script>
+		    $(document).ready(function(){
+		    
+		    $('#slider-1').slider({
+		    value:50,
+		    slide:function(event, ui){
+		    if (ui.value < 50)
+				   document.getElementById('reclamacao-1').style.display = 'block';
+			else 
+				   document.getElementById('reclamacao-1').style.display = 'none';
+				   
+				   }
+				   });
+				   });
+				   </script>
 		</div>
 		<div class="col-xs-4">Muito Lotado</div>
 		<div class="col-xs-4 text-center">Razoável</div>
 		<div class="col-xs-4 text-right">Vazio</div>
-		
+	
+		<div id="reclamacao-1" class="reclamacao">
+		  <h5 id="reclamacao-title-1"><strong>Deseja enviar uma reclamação à SPTrans?</strong></h5>
+		  <textarea rows="4" cols="0"></textarea>
+		</div>
+
 		<!-- fim avaliacao collapse1 -->
 	      </div>
 	    </div>
@@ -102,9 +111,9 @@ $(document).ready(function(){
 		    $(document).ready(function(){
 		    
 		    $('#slider-2').slider({
-        value:50,
+		    value:50,
 		    slide:function(event, ui){
-		    console.log(ui.value);
+				   
 		    }
 		    });
 		    });
