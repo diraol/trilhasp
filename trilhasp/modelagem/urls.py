@@ -29,5 +29,5 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     url(r'^cadastrar/$', 'modelagem.views.cadastrar', name='cadastrar'),
-    url(r'^login$', 'modelagem.views.login', name='login'),
+    url(r'^dologin$', 'modelagem.views.dologin', name='dologin'),
 )

@@ -23,13 +23,14 @@ from django.template import RequestContext
 from django.http import HttpResponse, HttpResponseRedirect
 from django.views.generic import TemplateView
 from django.shortcuts import render_to_response, get_object_or_404, get_list_or_404, redirect, render
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate
+from django.contrib.auth import login as auth_login
 from django.contrib.auth.decorators import login_required
 from sptrans import v0 as SPTrans
 
 TOKEN_SPTRANS='2be24b09b40618e0bc14c361657352cb5cf94f263f4dd98ae1dd0ed166f455a1'
 
-def login(request):
+def dologin(request):
     if request.user.is_authenticated():
         return HttpResponseRedirect('/avaliar')
 
@@ -39,14 +40,15 @@ def login(request):
     user = authenticate(username=username, password=password)
     if user is not None:
         if user.is_active:
-            login(request,user)
-            return redirect(request, '/avaliar', {})
+            auth_login(request, user)
+            return HttpResponseRedirect('/avaliar')
+            #return render(request, '/avaliar', {})
         else:
             errors.append("User is not activated")
     else:
         errors.append("User not found or bad password")
 
-    return redirect(request, '/avaliar', {'errors': errors})
+    return render(request, 'login.html', {'errors': errors})
 
 def logout(request):
     logout(request)
