@@ -20,17 +20,18 @@
 from __future__ import unicode_literals
 from django.contrib.auth.models import User
 from django.template import RequestContext
-from django.http import HttpResponse
-from django.shortcuts import render_to_response, get_object_or_404, get_list_or_404, redirect
+from django.http import HttpResponse, HttpResponseRedirect
+from django.views.generic import TemplateView
+from django.shortcuts import render_to_response, get_object_or_404, get_list_or_404, redirect, render
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 from sptrans import v0 as SPTrans
 
 TOKEN_SPTRANS='2be24b09b40618e0bc14c361657352cb5cf94f263f4dd98ae1dd0ed166f455a1'
 
-def do_login(request):
+def login(request):
     if request.user.is_authenticated():
-        return HttpResponseRedirect(request, 'selecionaLinha.html', {})
+        return redirect(request, '/avaliar/', {})
 
     errors = []
     username = request.POST.get('username', None)
@@ -39,36 +40,42 @@ def do_login(request):
     if user is not None:
         if user.is_active:
             login(request,user)
-            return HttpResponseRedirect(request, 'selecionaLinha.html', {})
+            return redirect(request, '/avaliar', {})
         else:
             errors.append("User is not activated")
     else:
         errors.append("User not found or bad password")
 
-    return HttpResponseRedirect(request, 'login.html', {'errors': errors})
+    return redirect(request, '/avaliar/', {'errors': errors})
 
 def logout(request):
     logout(request)
-    HttpResponseRedirect(request, 'index.html', {})
+    redirectRedirect(request, '/', {})
 
-def createUser(request):
+def cadastrar(request):
     error = []
-    username = request.POST.get('username', None)
-    password = request.POST.get('password', None)
-    email = request.POST.get('email', None)
-    if username is not None:
-        if password is not None:
-            if email is not None:
-                user = User.objects.create_user(username, email, password)
-                user.save()
-                return HttpResponseredirect(request, 'lista
+    if request.method == 'POST':
+        username = request.POST.get('username', None)
+        password = request.POST.get('password', None)
+        email = request.POST.get('email', None)
+        #TODO: Checar se usuário existe na base
+        #TODO: Checar se email existe na base
+        if username is not None:
+            if password is not None:
+                if email is not None:
+                    user = User.objects.create_user(username, email, password)
+                    user.save()
+                    return HttpResponseRedirect('/avaliar')
+                else:
+                    error.append("Email inválido")
             else:
-                error.append("Email inválido")
+                error.append("Password inválido")
         else:
-            error.append("Password inválido")
+            error.append("Username inválido")
     else:
-        error.append("Username inválido")
-    request.response
+        error.append("Tentativa inválida de acesso")
+    return render(request, 'cadastro.html', {'errors': error})
+    #return render(request, '/cadastro/', {'errors': errors})
 
 def logaApiSptrans():
     cliente = SPTrans.Client()

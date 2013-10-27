@@ -35,11 +35,11 @@ def login(request):
 def cadastro(request):
     return render(request, 'cadastro.html', {})
 
-def escolhelinha(request):
-    return render(request, 'escolhe-linha.html', {})
+def avaliar(request):
+    return render(request, 'avaliar.html', {})
 
 def perfil(request):
     return render(request, 'perfil.html', {})
 
-def avaliaespec(request):
+def especificas(request):
     return render(request, 'perguntas_especificas.html', {})
