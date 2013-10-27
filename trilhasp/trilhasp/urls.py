@@ -10,9 +10,9 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     # Examples:
-    # url(r'^$', 'trilhasp.views.home', name='home'),
+    url(r'^$', 'trilhasp.views.index', name='index'),
     # url(r'^trilhasp/', include('trilhasp.foo.urls')),
-    url(r'^modelagem', include('trilhasp.modelagem.urls')),
+    #url(r'^modelagem', include('modelagem.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:
     #url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
