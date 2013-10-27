@@ -22,14 +22,20 @@ from django.contrib.auth.models import User
 from django.template import RequestContext
 from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response, get_object_or_404, get_list_or_404, redirect
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 
 def index(request):
-    return render(request, 'base.html', {})
+    if not request.user.is_authenticated():
+        return HttpResponseRedirect('/login')
+    return render(request, 'perfil.html', {})
 
 def loginpage(request):
+    return render(request, 'login.html', {})
+
+def logoutpage(request):
+    logout(request)
     return render(request, 'login.html', {})
 
 def cadastro(request):
@@ -50,3 +56,9 @@ def especificas(request):
     if not request.user.is_authenticated():
         return HttpResponseRedirect('/login')
     return render(request, 'perguntas_especificas.html', {})
+
+def primavali(request):
+    #if request.method == 'POST':
+    return render(request, 'perguntas_especificas.html', {})
+def fimavaliacao(request):
+    return render(request, 'perfil.html', {})

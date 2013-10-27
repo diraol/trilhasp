@@ -30,10 +30,13 @@ urlpatterns = patterns('',
     # Examples:
     url(r'^$', 'trilhasp.views.index', name='index'),
     url(r'^login$', 'trilhasp.views.loginpage', name='loginpage'),
+    url(r'^logoutpage$', 'trilhasp.views.logoutpage', name='logoutpage'),
     url(r'^cadastro$', 'trilhasp.views.cadastro', name='cadastro'),
     url(r'^avaliar$', 'trilhasp.views.avaliar', name='avaliar'),
     url(r'^avaliar/especificas$', 'trilhasp.views.especificas', name='especificas'),
     url(r'^perfil$', 'trilhasp.views.perfil', name='perfil'),
+    url(r'^fimavaliacao$', 'trilhasp.views.fimavaliacao', name='fimavaliacao'),
+    url(r'^primeiraavaliacao$', 'trilhasp.views.primavali', name='primavali'),
     # url(r'^trilhasp/', include('trilhasp.foo.urls')),
     url(r'', include('modelagem.urls')),
 

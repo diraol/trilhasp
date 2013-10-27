@@ -2,13 +2,14 @@
 
 {% block menu %}
     <li><a href="/perfil">Perfil</a></li>
-    <li><a href="/informarlinha">Informar Linha</a></li>
+    <li><a href="/avaliar">Informar Linha</a></li>
     <li class="active"><a href="#">Perguntas específicas</a></li>
 {% endblock menu %}
 
 {% block mainContent %}
 
-      <form class="form-signin">
+      <form class="form-signin" action="/fimavaliacao" method="post" name="fim_avaliacao">
+        {% csrf_token %}
         <h1>Como você avalia</h1>
 
     <div class="panel-group" id="accordion">

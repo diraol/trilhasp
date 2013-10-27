@@ -88,3 +88,4 @@ def logaApiSptrans():
 def recuperaLinhas(request):
     pass
 
+

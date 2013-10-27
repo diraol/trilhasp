@@ -12,7 +12,8 @@
 	    </div>
     {% endif %}
       
-     <form class="form-signin" name="avaliacao_da_rota" action="primeiraavaliacao" method="post">
+     <form class="form-signin" name="avaliacao_da_rota" action="/primeiraavaliacao" method="post">
+        {% csrf_token %}
         <h1 class="form-signin-heading">Informar Linha</h1>
 	    <input type="text" class="form-control" placeholder="" required autofocus>
         <a onClick="avaliacaoGeral()" id="btnComecarAvaliacao" class="btn btn-lg btn-primary btn-block" type="submit" style="margin-top:10px;">Começar a Avaliação</a>
@@ -28,7 +29,7 @@
 	   <!-- fim avaliacao collapse1 -->
         
         <div style="margin-top:30px">
-          <a href="perguntas-especificas.html" class="btn btn-lg btn-primary btn-block">Continuar</a>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Continuar</button>
         </div>
       </form>
     
