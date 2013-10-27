@@ -24,28 +24,74 @@ from django.http import HttpResponse
 from django.shortcuts import render_to_response, get_object_or_404, get_list_or_404, redirect
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
+from sptrans import v0 as SPTrans
+
+TOKEN_SPTRANS='2be24b09b40618e0bc14c361657352cb5cf94f263f4dd98ae1dd0ed166f455a1'
 
 def do_login(request):
+    if request.user.is_authenticated():
+        return HttpResponseRedirect(request, 'selecionaLinha.html', {})
+
     errors = []
-    username = request.POST['username']
-    password = request.POST['password']
+    username = request.POST.get('username', None)
+    password = request.POST.get('password', None)
     user = authenticate(username=username, password=password)
     if user is not None:
         if user.is_active:
             login(request,user)
+            return HttpResponseRedirect(request, 'selecionaLinha.html', {})
         else:
             errors.append("User is not activated")
     else:
         errors.append("User not found or bad password")
 
-    HttpResponseRedirect(request, 'login.html', {'errors': errors})
+    return HttpResponseRedirect(request, 'login.html', {'errors': errors})
 
 def logout(request):
     logout(request)
     HttpResponseRedirect(request, 'index.html', {})
 
 def createUser(request):
-    user = User.objects.create_user(request.POST['username'], request.POST['email'], request.POST['password'])
-    user.save()
+    error = []
+    username = request.POST.get('username', None)
+    password = request.POST.get('password', None)
+    email = request.POST.get('email', None)
+    if username is not None:
+        if password is not None:
+            if email is not None:
+                user = User.objects.create_user(username, email, password)
+                user.save()
+                return HttpResponseredirect(request, 'lista
+            else:
+                error.append("Email inválido")
+        else:
+            error.append("Password inválido")
+    else:
+        error.append("Username inválido")
+    request.response
+
+def logaApiSptrans():
+    cliente = SPTrans.Client()
+    cliente.authenticate(TOKEN_SPTRANS)
+
+def recuperaLinhas(request):
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

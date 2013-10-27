@@ -19,6 +19,7 @@
 
 from __future__ import unicode_literals
 from django.db import models
+from django.contrib.auth.models import User
 import datetime
 
 # Create your models here.
@@ -26,28 +27,24 @@ class Pergunta(models.Model):
     """Classe que definirá as perguntas e os tipos de resposta de cada pergunta.
         Atributos:
             pergunta -- string;
-            tipo_resposta -- item da lista de tipos pré-definida
+            extremo_negativo -- string
+            centro -- string
+            extremo_positivo -- string
             habilitado -- booleano que define se a pergunta está ativa ou não no sistema
     """
-
-    BINARIA="Bin"
-    ESCALANUM="Quant"
-    ESCALAQUALI="Quali"
-    TIPOS_RESPOSTA = (
-        (BINARIA, "Binária"),
-        (ESCALANUM, "Escala Numérica"),
-        (ESCALAQUALI, "Escala Qualitativa"),
-    )
-
     pergunta = models.CharField(max_length=255, blank=False, unique=True)
-    tipo_resposta = models.CharField(max_length=255, choices=TIPOS_RESPOSTA, blank=False, default=ESCALANUM)
+    extremo_negativo = models.CharField(max_length=50, blank=False)
+    centro = models.CharField(max_length=50, blank=False)
+    extremo_positivo = models.CharField(max_length=50, blank=False)
     habilitado = models.BooleanField(default=False)
+    orgem = models.IntegerField(unique=True)
 
 class Avaliacao(models.Model):
     """Classe de avaliação propriamente dita, que vai armazenar as avaliações feitas pelos usuários
         Atributos:
-            usuario -- id do usuário que fez a avaliação (fk)
-            linha -- id da linha de ônibus avaliada (fk)
+            user -- id do usuário que fez a avaliação (fk)
+            linha -- id da linha de ônibus
+            prefixo -- Prefixo do ônibus (identificador único do carro)
             sentido -- sentido da linha (centro/bairro - bairro/centro)
             pergunta -- id da pergunta sendo respondida (fk)
             timestamp -- datetime.datetime -- dia da avaliação
@@ -59,21 +56,22 @@ class Avaliacao(models.Model):
     ("TPTS", "Term. Primário -> Term. Secundário"),
     ("TSTP", "Term. Secundário -> Term. Primário"),
     )
-    usuario = models.ForeignKey('Usuario')
-    linha = models.ForeignKey('Onibus')
-    sentido = models.CharField(max_length=60, choices=SENTIDOS, blank=False)
+    user = models.ForeignKey(User)
+    linha = models.CharField(max_length=30, blank=False)
+    prefixo = models.CharField(max_length=30)
+    sentido = models.IntegerField()
     pergunta = models.ForeignKey('Pergunta')
     timestamp = models.DateTimeField(auto_now_add=True, blank=False)
-    lat = models.DecimalFiedl(max_digits=9, decimal_places=6, blank=False)
-    long = models.DecimalFiedl(max_digits=9, decimal_places=6, blank=False)
+    lat = models.DecimalField(max_digits=9, decimal_places=6, blank=False)
+    long = models.DecimalField(max_digits=9, decimal_places=6, blank=False)
     resposta = models.IntegerField(blank=False)
 
     class Meta:
-        unique_together=('usuario','linha','timestamp')
+        unique_together=('user','linha','timestamp')
 
     @staticmethod
-    def _ja_avaliado(self,usuario,linha,pergunta,timestamp)
-        lista_avaliacoes = Avaliacoes.objects.filter(usuario=usuario,linha=linha,data=data,pergunta=pergunta)
+    def _ja_avaliado(self,user,linha,pergunta,timestamp):
+        lista_avaliacoes = Avaliacoes.objects.filter(user=user,linha=linha,data=data,pergunta=pergunta)
         if lista_avaliacoes:
             for avaliacao in lista_avaliacoes:
                 #TODO: Período mínimo entre avaliações hardcoded
@@ -85,10 +83,18 @@ class Avaliacao(models.Model):
             return False
 
     @staticmethod
-    def adiciona_avaliacao(self,usuario,linha,sentido,pergunta,lat,long,resposta):
-        """Adiciona a avaliação verificando a unicidade de usuario-linha-pergunta-timestamp"""
+    def adiciona_avaliacao(self,user,linha,sentido,pergunta,lat,long,resposta):
+        """Adiciona a avaliação verificando a unicidade de user-linha-pergunta-timestamp"""
         timestamp = datetime.datetime.now()
-        ja_avaliada = _ja_avaliada(usuario,linha,pergunta,timestamp)
-        if ja_avaliada:
-            return False
+        #ja_avaliada = _ja_avaliada(user,linha,pergunta,timestamp)
+        #if ja_avaliada:
+        #    return False
+
+
+class Onibus(models.Model):
+
+    route_id = models.CharField(max_length=30)
+    trip_id = models.CharField(max_length=30, unique=True)
+    trip_headsign = models.CharField(max_length=250)
+    direction_id = models.BooleanField() #0 = TPTS ; 1 = TSTP
 
