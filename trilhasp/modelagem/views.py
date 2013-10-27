@@ -31,7 +31,7 @@ TOKEN_SPTRANS='2be24b09b40618e0bc14c361657352cb5cf94f263f4dd98ae1dd0ed166f455a1'
 
 def login(request):
     if request.user.is_authenticated():
-        return redirect(request, '/avaliar/', {})
+        return HttpResponseRedirect('/avaliar')
 
     errors = []
     username = request.POST.get('username', None)
@@ -46,14 +46,14 @@ def login(request):
     else:
         errors.append("User not found or bad password")
 
-    return redirect(request, '/avaliar/', {'errors': errors})
+    return redirect(request, '/avaliar', {'errors': errors})
 
 def logout(request):
     logout(request)
     redirectRedirect(request, '/', {})
 
 def cadastrar(request):
-    error = []
+    errors = []
     if request.method == 'POST':
         username = request.POST.get('username', None)
         password = request.POST.get('password', None)
@@ -63,19 +63,21 @@ def cadastrar(request):
         if username is not None:
             if password is not None:
                 if email is not None:
-                    user = User.objects.create_user(username, email, password)
-                    user.save()
-                    return HttpResponseRedirect('/avaliar')
+                    try:
+                        user = User.objects.create_user(username, email, password)
+                        user.save()
+                        return HttpResponseRedirect('/avaliar')
+                    except Exception as e:
+                        errors.append(e)
                 else:
-                    error.append("Email inválido")
+                    errors.append("Email inválido")
             else:
-                error.append("Password inválido")
+                errors.append("Password inválido")
         else:
-            error.append("Username inválido")
+            errors.append("Username inválido")
     else:
-        error.append("Tentativa inválida de acesso")
-    return render(request, 'cadastro.html', {'errors': error})
-    #return render(request, '/cadastro/', {'errors': errors})
+        errors.append("Tentativa inválida de acesso")
+    return render(request, 'cadastro.html', {'errors': errors})
 
 def logaApiSptrans():
     cliente = SPTrans.Client()
