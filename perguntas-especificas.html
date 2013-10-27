@@ -49,14 +49,14 @@
     <div class="container">
 
       <form class="form-signin">
-        <h1>Como voc. avalia</h1>
+        <h1>Como você avalia</h1>
 
 	<div class="panel-group" id="accordion">
 	  <div class="panel panel-default">
 	    <div class="panel-heading">
 	      <h4 class="panel-title">
 		<a class="accordion-toggle" data-toggle="collapse" data-target="#collapseOne" href="#collapseOne">
-		  Lota..o
+		  Lotação
 		</a>
 	      </h4>
 	    </div>
@@ -77,7 +77,7 @@ $(document).ready(function(){
 </script>
 		</div>
 		<div class="col-xs-4">Muito Lotado</div>
-		<div class="col-xs-4 text-center">Razo.vel</div>
+		<div class="col-xs-4 text-center">Razoável</div>
 		<div class="col-xs-4 text-right">Vazio</div>
 		
 		<!-- fim avaliacao collapse1 -->
@@ -88,7 +88,7 @@ $(document).ready(function(){
 	    <div class="panel-heading">
 	      <h4 class="panel-title">
 		<a class="accordion-toggle" data-toggle="collapse" data-target="#collapseTwo" href="#collapseTwo">
-		  Conservação do veiculo
+		  Conforto Térmico
 		</a>
 	      </h4>
 	    </div>
@@ -108,9 +108,9 @@ $(document).ready(function(){
 		    });
 		  </script>
 		  
-		  <div class="col-xs-4">Muito Lotado</div>
-		  <div class="col-xs-4 text-center">Razo.vel</div>
-		  <div class="col-xs-4 text-right">Vazio</div>
+		  <div class="col-xs-4">Muito Quente ou Muito Frio</div>
+		  <div class="col-xs-4 text-center">Suportável</div>
+		  <div class="col-xs-4 text-right">Confortável</div>
 		  
 		</div>
 		<!-- fim avaliacao collapse1 -->
@@ -121,7 +121,7 @@ $(document).ready(function(){
 	    <div class="panel-heading">
 	      <h4 class="panel-title">
 		<a class="accordion-toggle" data-toggle="collapse" data-target="#collapseThree" href="#collapseThree">
-		  Velocidade da via
+		  Higiene
 		</a>
 	      </h4>
 	    </div>
@@ -141,20 +141,92 @@ $(document).ready(function(){
 		    });
 		  </script>
 		</div>
-		<div class="col-xs-4">Muito Lotado</div>
-		<div class="col-xs-4 text-center">Razo.vel</div>
-		<div class="col-xs-4 text-right">Vazio</div>
+		<div class="col-xs-4">Muito Sujo</div>
+		<div class="col-xs-4 text-center">Razoável</div>
+		<div class="col-xs-4 text-right">Muito Limpo</div>
 		
 		<!-- fim avaliacao collapse1 -->
    	      </div>
 	    </div>
 	  </div>
+      
+	  <div class="panel panel-default">
+	    <div class="panel-heading">
+	      <h4 class="panel-title">
+		<a class="accordion-toggle" data-toggle="collapse" data-target="#collapseFour" href="#collapseFour">
+		  Atendimento do Motorista
+		</a>
+	      </h4>
+	    </div>
+	    <div id="collapseFour" class="panel-collapse collapse">
+	      <div class="panel-body">
+		<!-- Inicio avaliacao collapse1 -->
+		<div id="avaliacao-4">
+		  <div id="slider-4"></div>
+<script>
+$(document).ready(function(){
+   
+    $('#slider-4').slider({
+        slide:function(event, ui){
+            console.log(ui.value);
+        }
+    });
+});
+</script>
+		</div>
+		<div class="col-xs-4">Muito Insatisfatório</div>
+		<div class="col-xs-4 text-center">Satisfatório</div>
+		<div class="col-xs-4 text-right">Muito Satisfatório</div>
+		
+		<!-- fim avaliacao collapse1 -->
+	      </div>
+	    </div>
+	  </div>
+      
+	  <div class="panel panel-default">
+	    <div class="panel-heading">
+	      <h4 class="panel-title">
+		<a class="accordion-toggle" data-toggle="collapse" data-target="#collapseFive" href="#collapseFive">
+		  Atendimento do Cobrador
+		</a>
+	      </h4>
+	    </div>
+	    <div id="collapseFive" class="panel-collapse collapse">
+	      <div class="panel-body">
+		<!-- Inicio avaliacao collapse1 -->
+		<div id="avaliacao-5">
+		  <div id="slider-5"></div>
+<script>
+$(document).ready(function(){
+   
+    $('#slider-5').slider({
+        slide:function(event, ui){
+            console.log(ui.value);
+        }
+    });
+});
+</script>
+		</div>
+		<div class="col-xs-4">Muito Insatisfatório</div>
+		<div class="col-xs-4 text-center">Satisfatório</div>
+		<div class="col-xs-4 text-right">Muito Satisfatório</div>
+		
+		<!-- fim avaliacao collapse1 -->
+	      </div>
+	    </div>
+	  </div>      
+      
+      
 	</div>
 	
+ 
+        
+<!--    
 	<div style="margin-top:10px;">
           <a id="salvar" class="btn btn-lg btn-primary btn-block disabled" type="submit">Salvar</a>
 	</div>
-	
+-->	
+
 	<div style="margin-top:10px;">
 	  <button class="btn btn-lg btn-success btn-block" type="submit">Finalizar</button>
 	</div>
