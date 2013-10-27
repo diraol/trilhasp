@@ -17,20 +17,22 @@
         <h1 class="form-signin-heading">Informar Linha</h1>
 	    <input type="text" class="form-control" placeholder="" required autofocus>
         <a onClick="avaliacaoGeral()" id="btnComecarAvaliacao" class="btn btn-lg btn-primary btn-block" type="submit" style="margin-top:10px;">Começar a Avaliação</a>
-       <h1>Avaliação Global do Ônibus</h1>
-	   <!-- Inicio avaliacao collapse1 -->
-	   <div id="avaliacao-1">
-	       <div id="slider-1"></div>
+        <div id="avaliacao-geral">
+            <h1>Avaliação Global do Ônibus</h1>
+	        <!-- Inicio avaliacao collapse1 -->
+	        <div id="avaliacao-1">
+	            <div id="slider-1"></div>
 
-	       <div class="col-xs-4">Péssimo</div>
-	       <div class="col-xs-4 text-center">Indiferente</div>
-	       <div class="col-xs-4 text-right">Excelente</div>	
+	            <div class="col-xs-4">Péssimo</div>
+	            <div class="col-xs-4 text-center">Indiferente</div>
+	            <div class="col-xs-4 text-right">Excelente</div>	
+            </div>
+            <div style="margin-top:30px">
+                <button class="btn btn-lg btn-primary btn-block" type="submit">Continuar</button>
+            </div>
         </div>
 	   <!-- fim avaliacao collapse1 -->
         
-        <div style="margin-top:30px">
-            <button class="btn btn-lg btn-primary btn-block" type="submit">Continuar</button>
-        </div>
       </form>
     
 {% endblock mainContent %}
