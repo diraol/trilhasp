@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block menu %}
+    <li><a href="/">Perfil</a></li>
+    <li  class="active"><a href="#">Moedas Trilha #SP</a></li>
+{% endblock menu %}
+
+
+{% block mainContent %}
+
+    <form class="form-signin">  
+      <h1>Moedas Trilha #SP</h1>
+
+      <h2>Preço dos Ônibus</h2>
+      <table class="table table-striped">
+        
+       <th class="col-xs-6"><strong>Ônibus</strong></th><th class="col-xs-6"><strong>Preço Aproximado Real</strong></th>
+        <tr><td class="col-xs-6">Micro-ônibus (M)</td><td class="col-xs-6">R$ 150 000,00</td></tr>
+      <tr><td class="col-xs-6">Padron (P)</td><td class="col-xs-6">R$ 300 000,00</td></tr>
+  <tr><td class="col-xs-6">Padron Etanol (E)</td><td  class="col-xs-6">R$ 460 000,00</td></tr>
+  <tr><td class="col-xs-6">Trólebus (T)</td><td class="col-xs-6">R$ 600 000,00</td></tr>
+  <tr><td class="col-xs-6">Articulado (A)</td><td lass="col-xs-6">R$ 650 000,00</td></tr>
+  <tr><td class="col-xs-6">Biarticulado (B)</td><td  class="col-xs-6">R$ 850 000,00</td></tr>
+      </table>
+        
+      
+      <h2>Equivalencia em Moedas</h2>
+
+      <table class="table table-striped">
+<th class="col-xs-3"><strong>Ônibus</strong></th><th class="col-xs-3"><strong>Ouro</strong></th><th class="col-xs-3"><strong>Prata</strong></th><th class="col-xs-3"><strong>Bronze</strong></th>
+<tr><td class="col-xs-3">M</td><td class="col-xs-3">5</td><td class="col-xs-3">15</td><td class="col-xs-3">45</td></tr>
+<tr><td class="col-xs-3">P</td><td class="col-xs-3">10</td><td class="col-xs-3">30</td><td class="col-xs-3">90</td></tr>
+<tr><td class="col-xs-3">E</td><td class="col-xs-3">15</td><td class="col-xs-3">45</td><td class="col-xs-3">135</td></tr>
+<tr><td class="col-xs-3">T</td><td class="col-xs-3">20</td><td class="col-xs-3">60</td><td class="col-xs-3">180</td></tr>
+<tr><td class="col-xs-3">A</td><td class="col-xs-3">22</td><td class="col-xs-3">66</td><td class="col-xs-3">198</td></tr>
+<tr><td class="col-xs-3">B</td><td class="col-xs-3">28</td><td class="col-xs-3">84</td><td class="col-xs-3">252</td></tr>
+
+      </table>
+      
+</form>
+{% endblock mainContent %}

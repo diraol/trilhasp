@@ -1,3 +1,7 @@
+table td, table th {
+  text-align:center;
+}
+
 .image-fit {
     margin-top:20px;
     margin-bottom:10px;
