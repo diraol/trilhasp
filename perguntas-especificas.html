@@ -12,19 +12,19 @@
 
     <!-- Bootstrap core CSS -->
     <link href="dist/css/bootstrap.css" rel="stylesheet">
-    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.0-rc.1/jquery.mobile-1.1.0-rc.1.min.css" />
 
     <!-- Custom styles for this template -->
     <link href="signin.css" rel="stylesheet">
 
-    <script type="text/javascript" src="dist/js/jquery-1.10.2.min.js"></script>
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+
     <script type="text/javascript" src="dist/js/bootstrap.js"></script>
     <script type="text/javascript" src="funcoes.js"></script>
   </head>
 
   <body>
-
-
 
     <div class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
@@ -49,60 +49,38 @@
     <div class="container">
 
       <form class="form-signin">
-        <h1>Perguntas específicas</h1>
+        <h1>Como voc. avalia</h1>
 
-      
 	<div class="panel-group" id="accordion">
 	  <div class="panel panel-default">
 	    <div class="panel-heading">
 	      <h4 class="panel-title">
 		<a class="accordion-toggle" data-toggle="collapse" data-target="#collapseOne" href="#collapseOne">
-		  Conforto
+		  Lota..o
 		</a>
 	      </h4>
 	    </div>
-	    <div id="collapseOne" class="panel-collapse collapse">
+	    <div id="collapseOne" class="panel-collapse collapse in">
 	      <div class="panel-body">
-
-<!-- Inicio avaliacao collapse1 -->
-	<div id="avaliacao-1">
-
-	  <input class="col-xs-12" type="range" name="slider" id="slider" value="50" min="0" max="100" />
-	  
-<!--
-	  <div class="col-sm-offset-1 col-xs-2">
-	    <button id="star-1-avaliacao-1" onclick="saveAvaliacao(this.id)" type="button"  class="btn btn-star btn-default btn-lg">
-	      <span id="star-1-span-avaliacao-1" class="glyphicon glyphicon-star-empty"></span>
-	    </button>
-	  </div>
-
-	  <div class="col-xs-2">
-	    <button id="star-2-avaliacao-1" onclick="saveAvaliacao(this.id)" type="button"  class="btn btn-star btn-default btn-lg">
-	      <span id="star-2-span-avaliacao-1" class="glyphicon glyphicon-star-empty"></span>
-	    </button>
-	  </div>
-	  
-	  <div class="col-xs-2">
-	    <button id="star-3-avaliacao-1" onclick="saveAvaliacao(this.id)" type="button"  class="btn btn-star btn-default btn-lg">
-	      <span id="star-3-span-avaliacao-1" class="glyphicon glyphicon-star-empty"></span>
-	    </button>
-	  </div>
-	  
-	  <div class="col-xs-2">
-	    <button id="star-4-avaliacao-1" onclick="saveAvaliacao(this.id)" type="button"  class="btn btn-star btn-default btn-lg">
-	      <span id="star-4-span-avaliacao-1" class="glyphicon glyphicon-star-empty"></span>
-	    </button>
-	  </div>
-	  
-	  <div class="col-xs-2">
-	    <button id="star-5-avaliacao-1" onclick="saveAvaliacao(this.id)" type="button"  class="btn btn-star btn-default btn-lg">
-	      <span id="star-5-span-avaliacao-1" class="glyphicon glyphicon-star-empty"></span>
-	    </button>
-	  </div>
--->
-        </div>
-<!-- fim avaliacao collapse1 -->
-
+		<!-- Inicio avaliacao collapse1 -->
+		<div id="avaliacao-1">
+		  <div id="slider-1"></div>
+<script>
+$(document).ready(function(){
+   
+    $('#slider-1').slider({
+        slide:function(event, ui){
+            console.log(ui.value);
+        }
+    });
+});
+</script>
+		</div>
+		<div class="col-xs-4">Muito Lotado</div>
+		<div class="col-xs-4 text-center">Razo.vel</div>
+		<div class="col-xs-4 text-right">Vazio</div>
+		
+		<!-- fim avaliacao collapse1 -->
 	      </div>
 	    </div>
 	  </div>
@@ -116,44 +94,26 @@
 	    </div>
 	    <div id="collapseTwo" class="panel-collapse collapse">
 	      <div class="panel-body">
-
-
-<!-- Inicio avaliacao collapse2 -->
-	<div id="avaliacao-2">
-	  <div class="col-sm-offset-1 col-xs-2">
-	    <button id="star-1-avaliacao-2" onclick="saveAvaliacao(this.id)" type="button"  class="btn btn-star btn-default btn-lg">
-	      <span id="star-1-span-avaliacao-2" class="glyphicon glyphicon-star-empty"></span>
-	    </button>
-	  </div>
-	  
-	  <div class="col-xs-2">
-	    <button id="star-2-avaliacao-2" onclick="saveAvaliacao(this.id)" type="button"  class="btn btn-star btn-default btn-lg">
-	      <span id="star-2-span-avaliacao-2" class="glyphicon glyphicon-star-empty"></span>
-	    </button>
-	  </div>
-	  
-	  <div class="col-xs-2">
-	    <button id="star-3-avaliacao-2" onclick="saveAvaliacao(this.id)" type="button"  class="btn btn-star btn-default btn-lg">
-	      <span id="star-3-span-avaliacao-2" class="glyphicon glyphicon-star-empty"></span>
-	    </button>
-	  </div>
-	  
-	  <div class="col-xs-2">
-	    <button id="star-4-avaliacao-2" onclick="saveAvaliacao(this.id)" type="button"  class="btn btn-star btn-default btn-lg">
-	      <span id="star-4-span-avaliacao-2" class="glyphicon glyphicon-star-empty"></span>
-	    </button>
-	  </div>
-	  
-	  <div class="col-xs-2">
-	    <button id="star-5-avaliacao-2" onclick="saveAvaliacao(this.id)" type="button"  class="btn btn-star btn-default btn-lg">
-	      <span id="star-5-span-avaliacao-2" class="glyphicon glyphicon-star-empty"></span>
-	    </button>
-	  </div>
-        </div>
-
-<!-- fim avaliacao collapse2 -->
-
-
+		<!-- Inicio avaliacao collapse2 -->
+		<div id="avaliacao-2">
+		  <div id="slider-2"></div>
+		  <script>
+		    $(document).ready(function(){
+		    
+		    $('#slider-2').slider({
+		    slide:function(event, ui){
+		    console.log(ui.value);
+		    }
+		    });
+		    });
+		  </script>
+		  
+		  <div class="col-xs-4">Muito Lotado</div>
+		  <div class="col-xs-4 text-center">Razo.vel</div>
+		  <div class="col-xs-4 text-right">Vazio</div>
+		  
+		</div>
+		<!-- fim avaliacao collapse1 -->
 	      </div>
 	    </div>
 	  </div>
@@ -167,52 +127,34 @@
 	    </div>
 	    <div id="collapseThree" class="panel-collapse collapse">
 	      <div class="panel-body">
-            
-            
-<!-- Inicio avaliacao collapse3 -->
-	<div id="avaliacao-3">
-	  <div class="col-sm-offset-1 col-xs-2">
-	    <button id="star-1-avaliacao-3" onclick="saveAvaliacao(this.id)" type="button"  class="btn btn-star btn-default btn-lg">
-	      <span id="star-1-span-avaliacao-3" class="glyphicon glyphicon-star-empty"></span>
-	    </button>
-	  </div>
-	  
-	  <div class="col-xs-2">
-	    <button id="star-2-avaliacao-3" onclick="saveAvaliacao(this.id)" type="button"  class="btn btn-star btn-default btn-lg">
-	      <span id="star-2-span-avaliacao-3" class="glyphicon glyphicon-star-empty"></span>
-	    </button>
-	  </div>
-	  
-	  <div class="col-xs-2">
-	    <button id="star-3-avaliacao-3" onclick="saveAvaliacao(this.id)" type="button"  class="btn btn-star btn-default btn-lg">
-	      <span id="star-3-span-avaliacao-3" class="glyphicon glyphicon-star-empty"></span>
-	    </button>
-	  </div>
-	  
-	  <div class="col-xs-2">
-	    <button id="star-4-avaliacao-3" onclick="saveAvaliacao(this.id)" type="button"  class="btn btn-star btn-default btn-lg">
-	      <span id="star-4-span-avaliacao-3" class="glyphicon glyphicon-star-empty"></span>
-	    </button>
-	  </div>
-	  
-	  <div class="col-xs-2">
-	    <button id="star-5-avaliacao-3" onclick="saveAvaliacao(this.id)" type="button"  class="btn btn-star btn-default btn-lg">
-	      <span id="star-5-span-avaliacao-3" class="glyphicon glyphicon-star-empty"></span>
-	    </button>
-	  </div>
-        </div>
-<!-- fim avaliacao collapse3 -->
-
-            
-	      </div>
+		<!-- Inicio avaliacao collapse1 -->
+		<div id="avaliacao-3">
+		  <div id="slider-3"></div>
+		  <script>
+		    $(document).ready(function(){
+		    
+		    $('#slider-3').slider({
+		    slide:function(event, ui){
+		    console.log(ui.value);
+		    }
+		    });
+		    });
+		  </script>
+		</div>
+		<div class="col-xs-4">Muito Lotado</div>
+		<div class="col-xs-4 text-center">Razo.vel</div>
+		<div class="col-xs-4 text-right">Vazio</div>
+		
+		<!-- fim avaliacao collapse1 -->
+   	      </div>
 	    </div>
 	  </div>
 	</div>
-
+	
 	<div style="margin-top:10px;">
           <a id="salvar" class="btn btn-lg btn-primary btn-block disabled" type="submit">Salvar</a>
 	</div>
-
+	
 	<div style="margin-top:10px;">
 	  <button class="btn btn-lg btn-success btn-block" type="submit">Finalizar</button>
 	</div>

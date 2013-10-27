@@ -50,3 +50,12 @@ var getNotaAvaliacao = function(idAvaliacao) {
 var avaliacaoGeral = function() {
     document.getElementById('avaliacao-geral').style.visibility = 'visible'; 
 }
+
+var getNotaSliderAvaliacao = function (idAvaliacao) {
+    $('#slider').slider({
+        slide: function (event, ui) {
+	    alert( ui.value);
+        }
+    });
+
+}
