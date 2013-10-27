@@ -75,23 +75,5 @@ def logaApiSptrans():
     cliente.authenticate(TOKEN_SPTRANS)
 
 def recuperaLinhas(request):
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    pass
 

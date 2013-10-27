@@ -1,0 +1,196 @@
+{% extends "base.html" %}
+
+{% block menu %}
+    <li><a href="/perfil">Perfil</a></li>
+    <li><a href="/informarlinha">Informar Linha</a></li>
+    <li class="active"><a href="#">Perguntas específicas</a></li>
+{% endblock menu %}
+
+{% block mainContent %}
+
+      <form class="form-signin">
+        <h1>Como você avalia</h1>
+
+    <div class="panel-group" id="accordion">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+          Lotação
+        </a>
+          </h4>
+        </div>
+        <div id="collapseOne" class="panel-collapse collapse in">
+          <div class="panel-body">
+        <!-- Inicio avaliacao collapse1 -->
+        <div id="avaliacao-1">
+          <div id="slider-1"></div>
+        </div>
+        <div class="col-xs-4">Muito Lotado</div>
+        <div class="col-xs-4 text-center">Razoável</div>
+        <div class="col-xs-4 text-right">Vazio</div>
+    
+        <div id="reclamacao-1" class="reclamacao">
+          <h5 id="reclamacao-title-1"><strong>Deseja enviar uma reclamação à SPTrans?</strong></h5>
+          <textarea rows="4" cols="0"></textarea>
+        </div>
+
+        <!-- fim avaliacao collapse1 -->
+          </div>
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+          Conforto Térmico
+        </a>
+          </h4>
+        </div>
+        <div id="collapseTwo" class="panel-collapse collapse">
+          <div class="panel-body">
+        <!-- Inicio avaliacao collapse2 -->
+        <div id="avaliacao-2">
+          <div id="slider-2"></div>
+ 
+          <div class="col-xs-4">Muito Quente ou Muito Frio</div>
+          <div class="col-xs-4 text-center">Suportável</div>
+          <div class="col-xs-4 text-right">Confortável</div>
+          
+        </div>
+        <!-- fim avaliacao collapse1 -->
+          </div>
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+          Higiene
+        </a>
+          </h4>
+        </div>
+        <div id="collapseThree" class="panel-collapse collapse">
+          <div class="panel-body">
+        <!-- Inicio avaliacao collapse1 -->
+        <div id="avaliacao-3">
+          <div id="slider-3"></div>
+        </div>
+        <div class="col-xs-4">Muito Sujo</div>
+        <div class="col-xs-4 text-center">Razoável</div>
+        <div class="col-xs-4 text-right">Muito Limpo</div>
+        
+        <!-- fim avaliacao collapse1 -->
+             </div>
+        </div>
+      </div>
+      
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseFour">
+          Atendimento do Motorista
+        </a>
+          </h4>
+        </div>
+        <div id="collapseFour" class="panel-collapse collapse">
+          <div class="panel-body">
+        <!-- Inicio avaliacao collapse1 -->
+        <div id="avaliacao-4">
+          <div id="slider-4"></div>
+        </div>
+        <div class="col-xs-4">Muito Insatisfatório</div>
+        <div class="col-xs-4 text-center">Satisfatório</div>
+        <div class="col-xs-4 text-right">Muito Satisfatório</div>
+        
+        <!-- fim avaliacao collapse1 -->
+          </div>
+        </div>
+      </div>
+      
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseFive">
+          Atendimento do Cobrador
+        </a>
+          </h4>
+        </div>
+        <div id="collapseFive" class="panel-collapse collapse">
+          <div class="panel-body">
+        <!-- Inicio avaliacao collapse1 -->
+        <div id="avaliacao-5">
+          <div id="slider-5"></div>
+        </div>
+        <div class="col-xs-4">Muito Insatisfatório</div>
+        <div class="col-xs-4 text-center">Satisfatório</div>
+        <div class="col-xs-4 text-right">Muito Satisfatório</div>
+        
+        <!-- fim avaliacao collapse1 -->
+          </div>
+        </div>
+      </div>      
+    </div>
+    <div style="margin-top:10px;">
+      <button class="btn btn-lg btn-success btn-block" type="submit">Finalizar</button>
+    </div>
+      </form>
+
+{% endblock mainContent %}
+
+{% block extrajs %}
+    <script>
+        $(document).ready(function(){
+            $("#slider-1").slider({
+                value:50,
+                slide:function(event, ui){
+                    console.log(ui)
+                    if (ui.value < 50)
+                        document.getElementById('reclamacao-1').style.display = 'block';
+                    else 
+                        document.getElementById('reclamacao-1').style.display = 'none';
+                }
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function(){
+            $('#slider-2').slider({
+                value:50,
+                slide:function(event, ui){
+                }
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function(){
+            $('#slider-5').slider({
+                value:50,
+                slide:function(event, ui){
+                    console.log(ui.value);
+                }
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function(){
+            $('#slider-4').slider({
+                value:50,
+                slide:function(event, ui){
+                    console.log(ui.value);
+                }
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function(){
+            $('#slider-3').slider({
+                value:50,
+                slide:function(event, ui){
+                    console.log(ui.value);
+                }
+            });
+        });
+    </script>
+
+{% endblock extrajs %}

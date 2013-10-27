@@ -11,6 +11,11 @@ admin.autodiscover()
 urlpatterns = patterns('',
     # Examples:
     url(r'^$', 'trilhasp.views.index', name='index'),
+    url(r'^login$', 'trilhasp.views.login', name='login'),
+    url(r'^cadastro$', 'trilhasp.views.cadastro', name='cadastro'),
+    url(r'^escolhaLinha$', 'trilhasp.views.escolhelinha', name='escolhelinha'),
+    url(r'^avaliacao/espec$', 'trilhasp.views.avaliaespec', name='avaliaespec'),
+    url(r'^perfil$', 'trilhasp.views.perfil', name='perfil'),
     # url(r'^trilhasp/', include('trilhasp.foo.urls')),
     #url(r'^modelagem', include('modelagem.urls')),
 

@@ -29,3 +29,17 @@ from django.shortcuts import render
 def index(request):
     return render(request, 'base.html', {})
 
+def login(request):
+    return render(request, 'login.html', {})
+
+def cadastro(request):
+    return render(request, 'cadastro.html', {})
+
+def escolhelinha(request):
+    return render(request, 'escolhe-linha.html', {})
+
+def perfil(request):
+    return render(request, 'perfil.html', {})
+
+def avaliaespec(request):
+    return render(request, 'perguntas_especificas.html', {})

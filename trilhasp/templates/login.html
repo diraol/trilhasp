@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block menu %}
+    <li class="active"><a href="#">Login</a></li>
+{% endblock menu %}
+
+{% block mainContent %}
+    <form class="form-signin">
+        <h1 class="form-signin-heading">Login Trilha #SP</h1>
+        <input type="text" class="form-control" placeholder="e-mail" required autofocus>
+        <input type="password" class="form-control" placeholder="senha" required>
+        
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Login Facebook</button>
+        <button class="btn btn-lg btn-success btn-block" type="submit">Login Trilha #SP</button>
+    </form>
+    <form class="form-signin">
+        <a href="/cadastro" class="btn btn-lg btn-warning btn-block" type="submit">Cadastro Trilha #SP</a>
+    </form>
+{% endblock mainContent %}
+      
