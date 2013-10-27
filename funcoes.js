@@ -46,3 +46,10 @@ var getNotaAvaliacao = function(idAvaliacao) {
     var ultimaEstrelaSelecionada = estrelasSelecionadas.item(size-1);
     return (ultimaEstrelaSelecionada  === null)? 0 : ultimaEstrelaSelecionada.id.charAt(5);  ultimaEstrelaSelecionada = document.getElementById('avaliacao-' + idAvaliacao).getElementsByClassName('glyphicon-star').item(this.length-1);
 }
+
+var avaliacaoGeral = function() {
+    var element  = document.getElementById('avaliacao-geral'); 
+    element.style.display = 'visible';
+    console.log(element.style.display);
+
+}
