@@ -12,12 +12,18 @@
 
     <!-- Bootstrap core CSS -->
     <link href="dist/css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.0-rc.1/jquery.mobile-1.1.0-rc.1.min.css" />
 
     <!-- Custom styles for this template -->
     <link href="signin.css" rel="stylesheet">
+
+    <script type="text/javascript" src="dist/js/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="dist/js/bootstrap.js"></script>
+    <script type="text/javascript" src="funcoes.js"></script>
   </head>
 
   <body>
+
 
 
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -60,6 +66,10 @@
 
 <!-- Inicio avaliacao collapse1 -->
 	<div id="avaliacao-1">
+
+	  <input class="col-xs-12" type="range" name="slider" id="slider" value="50" min="0" max="100" />
+	  
+<!--
 	  <div class="col-sm-offset-1 col-xs-2">
 	    <button id="star-1-avaliacao-1" onclick="saveAvaliacao(this.id)" type="button"  class="btn btn-star btn-default btn-lg">
 	      <span id="star-1-span-avaliacao-1" class="glyphicon glyphicon-star-empty"></span>
@@ -89,6 +99,7 @@
 	      <span id="star-5-span-avaliacao-1" class="glyphicon glyphicon-star-empty"></span>
 	    </button>
 	  </div>
+-->
         </div>
 <!-- fim avaliacao collapse1 -->
 
@@ -212,7 +223,5 @@
     <!-- Placed at the end of the document so the pages load faster -->
     
   </body>
-    <script type="text/javascript" src="dist/js/jquery-1.10.2.min.js"></script>
-    <script type="text/javascript" src="dist/js/bootstrap.js"></script>
-    <script type="text/javascript" src="funcoes.js"></script>
+
 </html>

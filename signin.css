@@ -1,3 +1,12 @@
+.ui-slider .ui-slider-handle{
+    width:50px; 
+    height:50px; 
+    background:url(../images/slider_grabber.png) no-repeat; overflow: hidden; 
+    position:absolute;
+    top: -10px;
+    border-style:none; 
+}
+
 #avaliacao-geral {
     visibility:hidden;
 }
