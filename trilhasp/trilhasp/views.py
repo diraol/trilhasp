@@ -36,7 +36,7 @@ def loginpage(request):
 
 def logoutpage(request):
     logout(request)
-    return render(request, 'login.html', {})
+    return HttpResponseRedirect('/login')
 
 def cadastro(request):
     return render(request, 'cadastro.html', {})
@@ -51,6 +51,9 @@ def perfil(request):
     if not request.user.is_authenticated():
         return HttpResponseRedirect('/login')
     return render(request, 'perfil.html', {})
+
+def explicacao(request):
+    return render(request, 'explicacao.html', {})
 
 def especificas(request):
     if not request.user.is_authenticated():
