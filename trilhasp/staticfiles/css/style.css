@@ -23,7 +23,7 @@ table td, table th {
     color:grey;
 }
 
-#reclamacao-1 {
+.reclamacao {
 display:none;
 }
 

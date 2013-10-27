@@ -30,9 +30,11 @@
         <div class="col-xs-4 text-center">Razoável</div>
         <div class="col-xs-4 text-right">Vazio</div>
     
+            <div>&nbsp;</div>
+            
         <div id="reclamacao-1" class="reclamacao">
           <h5 id="reclamacao-title-1"><strong>Deseja enviar uma reclamação à SPTrans?</strong></h5>
-          <textarea rows="4" cols="0"></textarea>
+          <textarea rows="3" style="width:100%;"></textarea>
         </div>
 
         <!-- fim avaliacao collapse1 -->
@@ -52,13 +54,22 @@
         <!-- Inicio avaliacao collapse2 -->
         <div id="avaliacao-2">
           <div id="slider-2"></div>
+        </div>
  
           <div class="col-xs-4">Muito Quente ou Muito Frio</div>
           <div class="col-xs-4 text-center">Suportável</div>
           <div class="col-xs-4 text-right">Confortável</div>
           
+            
+            <div>&nbsp;</div>
+            
+        <div id="reclamacao-2" class="reclamacao">
+          <h5 id="reclamacao-title-2"><strong>Deseja enviar uma reclamação à SPTrans?</strong></h5>
+          <textarea rows="3" style="width:100%;"></textarea>
         </div>
-        <!-- fim avaliacao collapse1 -->
+            
+            
+          <!-- fim avaliacao collapse1 -->
           </div>
         </div>
       </div>
@@ -80,6 +91,14 @@
         <div class="col-xs-4 text-center">Razoável</div>
         <div class="col-xs-4 text-right">Muito Limpo</div>
         
+            
+            <div>&nbsp;</div>
+            
+                    <div id="reclamacao-3" class="reclamacao">
+          <h5 id="reclamacao-title-3"><strong>Deseja enviar uma reclamação à SPTrans?</strong></h5>
+          <textarea rows="3" style="width:100%;"></textarea>
+        </div>
+            
         <!-- fim avaliacao collapse1 -->
              </div>
         </div>
@@ -103,6 +122,14 @@
         <div class="col-xs-4 text-center">Satisfatório</div>
         <div class="col-xs-4 text-right">Muito Satisfatório</div>
         
+            
+            <div>&nbsp;</div>
+            
+                    <div id="reclamacao-4" class="reclamacao">
+          <h5 id="reclamacao-title-4"><strong>Deseja enviar uma reclamação à SPTrans?</strong></h5>
+          <textarea rows="3" style="width:100%;"></textarea>
+        </div>
+            
         <!-- fim avaliacao collapse1 -->
           </div>
         </div>
@@ -126,6 +153,14 @@
         <div class="col-xs-4 text-center">Satisfatório</div>
         <div class="col-xs-4 text-right">Muito Satisfatório</div>
         
+            
+            <div>&nbsp;</div>
+            
+                    <div id="reclamacao-5" class="reclamacao">
+          <h5 id="reclamacao-title-5"><strong>Deseja enviar uma reclamação à SPTrans?</strong></h5>
+          <textarea rows="3" style="width:100%;"></textarea>
+        </div>
+            
         <!-- fim avaliacao collapse1 -->
           </div>
         </div>
@@ -155,39 +190,56 @@
     </script>
     <script>
         $(document).ready(function(){
-            $('#slider-2').slider({
+            $("#slider-2").slider({
                 value:50,
                 slide:function(event, ui){
+                    console.log(ui)
+                    if (ui.value < 50)
+                        document.getElementById('reclamacao-2').style.display = 'block';
+                    else 
+                        document.getElementById('reclamacao-2').style.display = 'none';
                 }
             });
         });
     </script>
     <script>
         $(document).ready(function(){
-            $('#slider-5').slider({
+            $("#slider-3").slider({
                 value:50,
                 slide:function(event, ui){
-                    console.log(ui.value);
+                    console.log(ui)
+                    if (ui.value < 50)
+                        document.getElementById('reclamacao-3').style.display = 'block';
+                    else 
+                        document.getElementById('reclamacao-3').style.display = 'none';
                 }
             });
         });
     </script>
     <script>
         $(document).ready(function(){
-            $('#slider-4').slider({
+            $("#slider-4").slider({
                 value:50,
                 slide:function(event, ui){
-                    console.log(ui.value);
+                    console.log(ui)
+                    if (ui.value < 50)
+                        document.getElementById('reclamacao-4').style.display = 'block';
+                    else 
+                        document.getElementById('reclamacao-4').style.display = 'none';
                 }
             });
         });
     </script>
     <script>
         $(document).ready(function(){
-            $('#slider-3').slider({
+            $("#slider-5").slider({
                 value:50,
                 slide:function(event, ui){
-                    console.log(ui.value);
+                    console.log(ui)
+                    if (ui.value < 50)
+                        document.getElementById('reclamacao-5').style.display = 'block';
+                    else 
+                        document.getElementById('reclamacao-5').style.display = 'none';
                 }
             });
         });
