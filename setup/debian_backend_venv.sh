@@ -11,20 +11,80 @@ if [ "$curdir" == "setup" ]; then
   cd ..
 fi
 
-echo "Installing Virtual env prerequisites"
-echo "sudo apt-get install  python-setuptools python-pip libmysqlclient-dev python-dev -y"
-sudo apt-get install python-setuptools python-pip libmysqlclient-dev python-dev -y
+if [ ! -d "venv" ]; then
 
-echo "Install VirtualEnv"
-echo "sudo pip install virtualenv"
-sudo pip install virtualenv
+  echo "Installing system database dependencies"
+  "sudo aptitude install postgresql-9.4 postgresql-contrib-9.4 postgresql-9.4-postgis-2.1 libpq-dev binutils libproj-dev gdal-bin python-gdal"
+  sudo aptitude install postgresql-9.4 postgresql-contrib-9.4 postgresql-9.4-postgis-2.1 libpq-dev binutils libproj-dev gdal-bin python-gdal
 
-echo "Creating a new virtualenv"
-echo "virtualenv --no-site-packages venv"
-virtualenv --no-site-packages venv
+  echo "Installing Virtual env prerequisites"
+  "sudo aptitude install -y python-setuptools python-pip python-dev"
+  sudo aptitude install -y python-setuptools python-pip python-dev
+
+  #This commented code below is for installing geo dependencies from source. Not needed.
+  #echo "Installing GEOS"
+  #if [ ! -d "temp" ]; then
+    #mkdir "temp"
+  #fi
+  #cd temp
+  #wget http://download.osgeo.org/geos/geos-3.3.8.tar.bz2
+  #tar xjf geos-3.3.8.tar.bz2
+  #cd geos-3.3.8
+  #./configure
+  #make
+  #sudo make install
+  #cd ..
+
+  #echo "Installing PROJ.4"
+  #wget http://download.osgeo.org/proj/proj-4.8.0.tar.gz
+  #wget http://download.osgeo.org/proj/proj-datumgrid-1.5.tar.gz
+  #tar xzf proj-4.8.0.tar.gz
+  #cd proj-4.8.0/nad
+  #tar xzf ../../proj-datumgrid-1.5.tar.gz
+  #cd ..
+  #./configure
+  #make
+  #sudo make install
+  #cd ..
+
+  #echo "Installing GDAL"
+  #wget http://download.osgeo.org/gdal/gdal-1.9.2.tar.gz
+  #tar xzf gdal-1.9.2.tar.gz
+  #cd gdal-1.9.2
+  #./configure
+  #make
+  #sudo make install
+  #cd ..
+
+  #cd ..
+  #rm -rf temp
+
+  echo "Creating trilhasp db user"
+  sudo -u postgres createuser trilhasp
+
+  echo "Changing trilhasp db user password (enter your chosen passwrd)"
+  sudo -u postgres psql --command '\password trilhasp'
+
+  #https://docs.djangoproject.com/en/1.7/ref/contrib/gis/install/postgis/
+  echo "Creating a spatial database with PostGIS 2.0 and PostgreSQL 9.1+"
+  sudo -u postgres createdb --encoding=UTF8 --owner=trilhasp trilhasp
+
+  echo "Creating postgis extensions"
+  sudo -u postgres psql -c "CREATE EXTENSION postgis;"
+  sudo -u postgres psql -c "CREATE EXTENSION postgis_topology;"
+
+  echo "Install VirtualEnv"
+  echo "sudo pip install virtualenv"
+  sudo pip install virtualenv
+
+  echo "Creating a new virtualenv"
+  echo "virtualenv --no-site-packages venv"
+  virtualenv --no-site-packages venv
+
+fi
 
 echo "Adicionando o virtualenv ao gitignore"
-if [! grep -Fxq "venv" .gitignore ]; then
+if [ ! $(grep -Fxq "venv" .gitignore) ]; then
   echo "venv" >> .gitignore
 fi
 
@@ -32,13 +92,15 @@ echo "Ativando o virtualenv"
 echo "source ./venv/bin/activate"
 source ./venv/bin/activate
 
-echo "Instalando o Django"
-pip install django
+echo "Instalando dependências python"
+pip install -r requirements.txt
 
-echo "Instalando o python-mysql e o ipython"
-pip install mysql-python
-pip install ipython
+echo "Seting up database"
+cd trilhasp
+python manage.py syncdb
+python manage.py makemigrations
+python manage.py migrate
 
-echo "Instalando dependências do projeto"
-echo "Python social auth"
+#echo "Instalando dependências do projeto"
+#echo "Python social auth"
 #pip install python-social-auth
