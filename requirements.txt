@@ -1,0 +1,6 @@
+Django==1.7.1
+ipython
+python-social-auth
+geopy
+python-geohash
+psycopg2
