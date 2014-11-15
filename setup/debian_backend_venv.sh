@@ -13,13 +13,13 @@ fi
 
 if [ ! -d "venv" ]; then
 
-  echo "Installing system database dependencies"
-  "sudo aptitude install postgresql-9.4 postgresql-contrib-9.4 postgresql-9.4-postgis-2.1 libpq-dev binutils libproj-dev gdal-bin python-gdal"
-  sudo aptitude install postgresql-9.4 postgresql-contrib-9.4 postgresql-9.4-postgis-2.1 libpq-dev binutils libproj-dev gdal-bin python-gdal
-
   echo "Installing Virtual env prerequisites"
-  "sudo aptitude install -y python-setuptools python-pip python-dev"
+  echo "sudo aptitude install -y python-setuptools python-pip python-dev"
   sudo aptitude install -y python-setuptools python-pip python-dev
+
+  echo "Installing system database dependencies"
+  echo "sudo aptitude install postgresql-9.4 postgresql-contrib-9.4 postgresql-9.4-postgis postgresql-server-dev-9.4 libpq-dev binutils libproj-dev gdal-bin python-gdal python-psycopg2"
+  sudo aptitude install postgresql-9.4 postgresql-contrib-9.4 postgresql-9.4-postgis-2.1 postgresql-9.4-postgis-2.1-scripts postgresql-server-dev-9.4 libpq-dev binutils libproj-dev gdal-bin python-gdal python-psycopg2
 
   #This commented code below is for installing geo dependencies from source. Not needed.
   #echo "Installing GEOS"
@@ -70,8 +70,8 @@ if [ ! -d "venv" ]; then
   sudo -u postgres createdb --encoding=UTF8 --owner=trilhasp trilhasp
 
   echo "Creating postgis extensions"
-  sudo -u postgres psql -c "CREATE EXTENSION postgis;"
-  sudo -u postgres psql -c "CREATE EXTENSION postgis_topology;"
+  sudo -u postgres psql -d trilhasp -c "CREATE EXTENSION postgis;"
+  sudo -u postgres psql -d trilhasp -c "CREATE EXTENSION postgis_topology;"
 
   echo "Install VirtualEnv"
   echo "sudo pip install virtualenv"
