@@ -4,4 +4,4 @@ from django.contrib import admin
 from models import *
 
 admin.site.register(GEOLastPosition)
-admin.site.register(GEOHistoryPositions)
+admin.site.register(GEOHistoryPosition)

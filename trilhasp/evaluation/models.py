@@ -32,7 +32,7 @@ class BusLine(models.Model):
     company_name = models.ForeignKey('BusCompanies', related_name='bus_lines')
 
     def __unicode__(self):
-        return self.bus_line_code
+        return self.bus_line_code + " (" + self.going_bus_name + " / " + self.return_bus_name + ")"
 
     class Meta:
         unique_together = ('bus_line_code', 'active')

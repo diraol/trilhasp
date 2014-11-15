@@ -19,7 +19,7 @@ class GEOLastPosition(models.Model):
     timestamp = models.DateTimeField(auto_now=True, auto_now_add=True)
 
 
-class GEOHistoryPositions(models.Model):
+class GEOHistoryPosition(models.Model):
     """This class stores all positions of each user. It will be used to generate
     statistics from the system and from the demand."""
     user = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='positions')

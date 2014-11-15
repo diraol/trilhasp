@@ -25,7 +25,7 @@ class GameCoinModel(models.Model):
         return self.name
 
 
-class GameFinances(models.Model):
+class GameFinance(models.Model):
     """Class that holds financial information from the users.
         Attributes:
             user -- user_id (fk)
@@ -48,7 +48,7 @@ def get_busbrand_logo_path(instance, filename):
     return os.path.join('images', 'brandlogos', filename)
 
 
-class BusBrands(models.Model):
+class BusBrand(models.Model):
     #MERCEDES = "Merc"
     #CAIO = "Caio"
     #BRANDS = (
@@ -102,7 +102,7 @@ class GameBusModel(models.Model):
     #    ("Z", "ALONGADO I"),
     #)
     name = models.CharField(max_length=30)
-    bus_brand = models.ManyToManyField(BusBrands, related_name='models')
+    bus_brand = models.ManyToManyField(BusBrand, related_name='models')
     efficiency = models.PositiveIntegerField(blank=False)  # rendimento / yield
     price = models.PositiveIntegerField(blank=False)
 
