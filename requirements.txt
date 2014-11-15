@@ -2,3 +2,5 @@ Django==1.7.1
 ipython
 python-social-auth
 psycopg2
+djangorestframework
+pillow

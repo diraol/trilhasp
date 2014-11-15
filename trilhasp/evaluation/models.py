@@ -2,7 +2,7 @@
 from __future__ import unicode_literals
 from django.conf import settings
 from django.contrib.gis.db import models
-import datetime
+import datetime, os
 
 # Create your models here.
 
@@ -10,9 +10,13 @@ import datetime
 ##                     Classes for the buses                                 ##
 ###############################################################################
 
+def get_company_logo_path(instance, filename):
+    return os.path.join('images', 'buscompanies', filename)
+
 
 class BusCompanies(models.Model):
-    company_name = models.CharField(max_length=200)
+    company_name = models.CharField(max_length=200, unique=True)
+    logo = models.ImageField(upload_to=get_company_logo_path, blank=True, null=True)
 
     def __unicode__(self):
         return self.company_name
@@ -25,21 +29,26 @@ class BusLine(models.Model):
     return_bus_name = models.CharField(max_length=200)
     active = models.BooleanField(default=True)
      #Name of the company responsible for this bus line
-    company_name = models.ForeignKey('BusCompanies')
+    company_name = models.ForeignKey('BusCompanies', related_name='bus_lines')
 
     def __unicode__(self):
         return self.bus_line_code
+
+    class Meta:
+        unique_together = ('bus_line_code', 'active')
 
 
 class Buses(models.Model):
     """ Class that represents each 'car' from the fleet """
     bus_unique_number = models.IntegerField(unique=True)
-    bus_line_code = models.ForeignKey('BusLine')
+    bus_line_code = models.ForeignKey('BusLine', related_name='buses')
     active = models.BooleanField(default=True)
 
     def __unicode__(self):
-        return str(self.bus_unique_number) + "(" + self.bus_line_code + ")"
+        return str(self.bus_unique_number) + " (" + self.bus_line_code.bus_line_code + ")"
 
+    class Meta:
+        unique_together = ('bus_unique_number', 'active')
 
 ###############################################################################
 ##                     Classes from Evaluation module                        ##
@@ -65,7 +74,7 @@ class EVALAnswerModel(models.Model):
 class EVALQuestion(models.Model):
     """ Questions created on the system (could be or not enabled) """
     question = models.CharField(max_length=200)
-    answer = models.ForeignKey('EVALAnswerModel')
+    answer = models.ForeignKey('EVALAnswerModel', related_name='questions')
     enabled = models.BooleanField(default=False)
 
     def __unicode__(self):
@@ -74,10 +83,10 @@ class EVALQuestion(models.Model):
 
 class EVALAnswer(models.Model):
     """ Save the Evaluation made by the users """
-    question = models.ForeignKey('EVALQuestion')
-    user = models.ForeignKey(settings.AUTH_USER_MODEL)
+    question = models.ForeignKey('EVALQuestion', related_name='evaluations')
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='evaluations')
     timestamp = models.DateTimeField(auto_now=True, auto_now_add=True)
-    bus_id = models.ForeignKey('Buses')  # unique ID of the bus
+    bus_id = models.ForeignKey('Buses', related_name='evaluations')  # unique ID of the bus
     answer_value = models.IntegerField(default=0)
     answer_text = models.TextField(blank=True)
     geolocation = models.PointField(default='POINT(-23.5475, -46.63611)')  # São Paulo geolocation
