@@ -1,7 +1,6 @@
 #-*- coding: utf-8 -*-
 from __future__ import unicode_literals
 from django.conf import settings
-from django.db import models
 from django.contrib.gis.db import models
 import datetime
 
@@ -12,17 +11,24 @@ import datetime
 ###############################################################################
 
 
+class BusCompanies(models.Model):
+    company_name = models.CharField(max_length=200)
+
+    def __unicode__(self):
+        return self.company_name
+
+
 class BusLine(models.Model):
     """ This class contains all bus lines and their informations """
-    COMPANIES = (
-        ("VS", "Via Sul"),
-    )
     bus_line_code = models.CharField(max_length=10)
     going_bus_name = models.CharField(max_length=200)
     return_bus_name = models.CharField(max_length=200)
     active = models.BooleanField(default=True)
      #Name of the company responsible for this bus line
-    company_name = models.CharField(max_length=200, choices=COMPANIES)
+    company_name = models.ForeignKey('BusCompanies')
+
+    def __unicode__(self):
+        return self.bus_line_code
 
 
 class Buses(models.Model):
@@ -30,6 +36,9 @@ class Buses(models.Model):
     bus_unique_number = models.IntegerField(unique=True)
     bus_line_code = models.ForeignKey('BusLine')
     active = models.BooleanField(default=True)
+
+    def __unicode__(self):
+        return str(self.bus_unique_number) + "(" + self.bus_line_code + ")"
 
 
 ###############################################################################
@@ -49,12 +58,18 @@ class EVALAnswerModel(models.Model):
     upper_limit_value = models.IntegerField(default=5)
     middle_value = models.IntegerField(default=0)
 
+    def __unicode__(self):
+        return self.answer
+
 
 class EVALQuestion(models.Model):
     """ Questions created on the system (could be or not enabled) """
     question = models.CharField(max_length=200)
     answer = models.ForeignKey('EVALAnswerModel')
     enabled = models.BooleanField(default=False)
+
+    def __unicode__(self):
+        return self.question
 
 
 class EVALAnswer(models.Model):
@@ -66,6 +81,9 @@ class EVALAnswer(models.Model):
     answer_value = models.IntegerField(default=0)
     answer_text = models.TextField(blank=True)
     geolocation = models.PointField(default='POINT(-23.5475, -46.63611)')  # São Paulo geolocation
+
+    def __unicode__(self):
+        return self.user.name + " - " + self.question.question + " - " + str(self.timestamp)
 
     @staticmethod
     def _already_evaluated(self):
