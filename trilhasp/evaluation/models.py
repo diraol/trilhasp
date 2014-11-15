@@ -65,7 +65,7 @@ class EVALAnswer(models.Model):
     bus_id = models.ForeignKey('Buses')  # unique ID of the bus
     answer_value = models.IntegerField(default=0)
     answer_text = models.TextField(blank=True)
-    geolocation = models.PointField(default=(0,0))  # São Paulo geolocation
+    geolocation = models.PointField(default='POINT(-23.5475, -46.63611)')  # São Paulo geolocation
 
     @staticmethod
     def _already_evaluated(self):
