@@ -1,10 +1,12 @@
 #-*- coding: utf-8 -*-
-__author__ = 'diraol'
 
-from django.shortcuts import render
-from models import *
+#from django.shortcuts import render
+from django.contrib.auth.models import User
+from rest_framework.permissions import AllowAny
 from rest_framework import viewsets
-from serializers import *
+from .serializers import *
+from .permissions import IsStaffOrTargetUser
+
 
 # Create your views here.
 class BusCompanyViewSet(viewsets.ModelViewSet):
@@ -30,3 +32,45 @@ class BusesViewSet(viewsets.ModelViewSet):
     """
     queryset = Buses.objects.all()
     serializer_class = BusesSerializer
+
+
+class EVALAnswerModelViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows answer models to be viewed or edited
+    """
+    queryset = EVALAnswerModel.objects.all()
+    serializer_class = EVALAnswerModelSerializer
+
+
+class EVALQuestionViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows questions to be viewed or edited.
+    """
+    queryset = EVALQuestion.objects.all()
+    serializer_class = EVALQuestionSerializer
+
+
+class EVALAnswerViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows users answers to be viewed or edited.
+    """
+    queryset = EVALAnswer.objects.all()
+    serializer_class = EVALAnswerSerializer
+
+
+###############################################################################
+##                     Classes for the Users                                 ##
+###############################################################################
+
+
+class UserView(viewsets.ModelViewSet):
+    serializer_class = UserSerializer
+    model = User
+    lookup_field = 'username'
+
+    def get_permissions(self):
+        # allow non-authenticated user to create via POST
+        return (AllowAny() if self.request.method == 'POST'
+                else IsStaffOrTargetUser()),
+
+
