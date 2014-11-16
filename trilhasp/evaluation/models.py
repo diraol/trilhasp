@@ -40,7 +40,7 @@ class BusLine(models.Model):
 
 class Buses(models.Model):
     """ Class that represents each 'car' from the fleet """
-    bus_unique_number = models.IntegerField(unique=True)
+    bus_unique_number = models.IntegerField(unique=True, primary_key=True)
     bus_line_code = models.ForeignKey('BusLine', related_name='buses')
     active = models.BooleanField(default=True)
 
