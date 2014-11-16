@@ -40,8 +40,13 @@ class BusLine(models.Model):
 
 class Buses(models.Model):
     """ Class that represents each 'car' from the fleet """
-    bus_unique_number = models.IntegerField(unique=True, primary_key=True)
-    bus_line_code = models.ForeignKey('BusLine', related_name='buses')
+    bus_unique_number = models.IntegerField(
+        unique=True,
+        primary_key=True,
+        help_text='Número único do "carro" (ônibus), pintado na lateral do mesmo.',
+        verbose_name='Bus Number'
+    )
+    bus_line_code = models.ForeignKey('BusLine', related_name='buses', limit_choices_to={'active':True})
     active = models.BooleanField(default=True)
 
     def __unicode__(self):
@@ -83,16 +88,23 @@ class EVALQuestion(models.Model):
 
 class EVALAnswer(models.Model):
     """ Save the Evaluation made by the users """
-    question = models.ForeignKey('EVALQuestion', related_name='evaluations')
+    question = models.ForeignKey('EVALQuestion', related_name='evaluations', limit_choices_to={'enabled':True})
     user = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='evaluations')
     timestamp = models.DateTimeField(auto_now=True, auto_now_add=True)
-    bus_id = models.ForeignKey('Buses', related_name='evaluations')  # unique ID of the bus
     answer_value = models.IntegerField(default=0)
     answer_text = models.TextField(blank=True)
+    bus_unique_number = models.ForeignKey(
+        'Buses',
+        related_name='evaluations',
+        limit_choices_to={'active':True},
+        to_field='bus_unique_number',
+        help_text='Número único do "carro" (ônibus), pintado na lateral do mesmo.',
+        verbose_name='Bus Number'
+    )  # unique ID of the bus
     geolocation = models.PointField(default='POINT(-23.5475, -46.63611)')  # São Paulo geolocation
 
     def __unicode__(self):
-        return self.user.name + " - " + self.question.question + " - " + str(self.timestamp)
+        return self.user.username + " - " + self.question.question + " - " + str(self.timestamp)
 
     @staticmethod
     def _already_evaluated(self):
