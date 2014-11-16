@@ -4,6 +4,7 @@
 from django.contrib.auth.models import User
 from rest_framework.permissions import AllowAny
 from rest_framework import viewsets
+from rest_framework import permissions
 from .serializers import *
 from .permissions import IsStaffOrTargetUser
 
@@ -15,6 +16,7 @@ class BusCompanyViewSet(viewsets.ModelViewSet):
     """
     queryset = BusCompanies.objects.all()
     serializer_class = BusCompaniesSerializer
+    permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
 
 
 class BusLineViewSet(viewsets.ModelViewSet):
@@ -24,6 +26,7 @@ class BusLineViewSet(viewsets.ModelViewSet):
     queryset = BusLine.objects.all()
     serializer_class = BusLineSerializer
     lookup_field = 'bus_line_code'
+    permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
 
 
 class BusesViewSet(viewsets.ModelViewSet):
@@ -32,6 +35,7 @@ class BusesViewSet(viewsets.ModelViewSet):
     """
     queryset = Buses.objects.all()
     serializer_class = BusesSerializer
+    permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
 
 
 class EVALAnswerModelViewSet(viewsets.ModelViewSet):
@@ -40,6 +44,7 @@ class EVALAnswerModelViewSet(viewsets.ModelViewSet):
     """
     queryset = EVALAnswerModel.objects.all()
     serializer_class = EVALAnswerModelSerializer
+    permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
 
 
 class EVALQuestionViewSet(viewsets.ModelViewSet):
@@ -48,6 +53,7 @@ class EVALQuestionViewSet(viewsets.ModelViewSet):
     """
     queryset = EVALQuestion.objects.all()
     serializer_class = EVALQuestionSerializer
+    permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
 
 
 class EVALAnswerViewSet(viewsets.ModelViewSet):
@@ -67,6 +73,7 @@ class UserView(viewsets.ModelViewSet):
     serializer_class = UserSerializer
     model = User
     lookup_field = 'username'
+    permission_classes = (IsStaffOrTargetUser,)
 
     def get_permissions(self):
         # allow non-authenticated user to create via POST
