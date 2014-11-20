@@ -4,3 +4,4 @@ python-social-auth
 psycopg2
 djangorestframework
 pillow
+djangorestframework-gis
