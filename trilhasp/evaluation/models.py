@@ -4,6 +4,7 @@ from django.conf import settings
 from django.contrib.gis.db import models
 import datetime, os
 
+
 # Create your models here.
 
 ###############################################################################

@@ -6,7 +6,17 @@ from rest_framework.permissions import AllowAny
 from rest_framework import viewsets
 from rest_framework import permissions
 from .serializers import *
-from .permissions import IsStaffOrTargetUser
+from utils.util import IsStaffOrTargetUser
+from django.shortcuts import render_to_response
+from django.template.context import RequestContext
+
+
+def home(request):
+   context = RequestContext(request,
+                           {'request': request,
+                            'user': request.user})
+   return render_to_response('home.html',
+                             context_instance=context)
 
 
 # Create your views here.
@@ -62,22 +72,3 @@ class EVALAnswerViewSet(viewsets.ModelViewSet):
     """
     queryset = EVALAnswer.objects.all()
     serializer_class = EVALAnswerSerializer
-
-
-###############################################################################
-##                     Classes for the Users                                 ##
-###############################################################################
-
-
-class UserView(viewsets.ModelViewSet):
-    serializer_class = UserSerializer
-    model = User
-    lookup_field = 'username'
-    permission_classes = (IsStaffOrTargetUser,)
-
-    def get_permissions(self):
-        # allow non-authenticated user to create via POST
-        return (AllowAny() if self.request.method == 'POST'
-                else IsStaffOrTargetUser()),
-
-

@@ -18,6 +18,9 @@ class GEOLastPosition(models.Model):
     geolocation = models.PointField(default='POINT(-23.5475, -46.63611)')  # São Paulo geolocation
     timestamp = models.DateTimeField(auto_now=True, auto_now_add=True)
 
+    def return_username(self):
+        return self.user.username
+
 
 class GEOHistoryPosition(models.Model):
     """This class stores all positions of each user. It will be used to generate
