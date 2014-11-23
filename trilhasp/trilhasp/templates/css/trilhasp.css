@@ -7,3 +7,82 @@
     font-size: 32px;
     font-weight: bold;
 }
+
+/**** SECTION PADDINGS ****/
+#sobre, #como, #contato { padding-top: 80px; background:#F0F0F0; }
+
+
+#contato h2 { color:#f0f0f0; line-height:40px;}
+#contato a { color:#444; }
+#contato a:hover { color:#f0f0f0; }
+#contato { color:#f0f0f0!important; background:#E84E41!important;}
+#contato .lead, #contato h1 {color:#f0f0f0!important; }
+
+.mobile-phone, .mobile-content {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	-webkit-transition: all .3s ease-in-out;
+	-moz-transition: all .3s ease-in-out;
+	-o-transition: all .3s ease-in-out;
+	transition: all .3s ease-in-out;
+}
+
+.mobile-left {
+	background-image: url("../img/mobile-phone.png");
+	background-repeat: no-repeat;
+	background-position: top center;
+	padding-right: 100px;
+	padding-left: 100px;
+	padding-top: 130px;
+	height: 350px;
+}
+
+.mobile-right {
+	background-image: url("../img/mobile-phone.png");
+	background-repeat: no-repeat;
+	background-position: bottom center;
+	padding: 80px 95px 70px;
+	padding-bottom: 70px;
+	height: 350px;
+}
+
+.mob-content-left {
+	background-image: url("../img/avalia_fundo_mobile.png");
+	background-repeat: no-repeat;
+	background-position: top center;
+	padding-right: 100px;
+	padding-left: 100px;
+	padding-top: 90px;
+	position:absolute;
+	top: 0;
+	left: 0;
+	height: 350px;
+	width:100%;
+	-khtml-opacity:.30;
+	-moz-opacity:.30;
+	-ms-filter:"alpha(opacity=30)";
+	filter:alpha(opacity=30);
+	filter: progid:DXImageTransform.Microsoft.Alpha(opacity=0.3);
+	opacity:.30;
+}
+
+.mob-content-right {
+	background-image: url("../img/mapa_fundo_mobile.png");
+	background-repeat: no-repeat;
+	background-position: bottom center;
+	padding: 80px 95px 70px;
+	padding-bottom: 70px;
+	position:absolute;
+	top: 0;
+	left: 0;
+	height: 350px;
+	width:100%;
+	-khtml-opacity:.30;
+	-moz-opacity:.30;
+	-ms-filter:"alpha(opacity=30)";
+	filter:alpha(opacity=30);
+	filter: progid:DXImageTransform.Microsoft.Alpha(opacity=0.3);
+	opacity:.30;
+}
+/

@@ -84,7 +84,7 @@ a {
 .marg-top-minus25 { margin-top: -25px; }
 
 /**** SECTION PADDINGS ****/
- #about, #team, #work, #price, #contact { padding-top: 80px; background:#F0F0F0; }
+ #sobre, #como, #work, #price, #contato { padding-top: 80px; background:#F0F0F0; }
 section { background:#F0F0F0; }
 
 /** BUTTONS **/
@@ -212,7 +212,7 @@ p { margin-bottom: 20px; }
 	color: #696f77;
 }
 
-#about h6{ margin:20px 0; font-weight:500; }
+#sobre h6{ margin:20px 0; font-weight:500; }
 .well h1, .well p { background:inherit!important; }
 
 /*--------------------------------*/
@@ -559,7 +559,9 @@ z-index:1;
 /*	BIG FIXED IMAGE
 /*--------------------------------*/	
 #big_image{
-	background: url(../img/big_image.jpg)  repeat-y top center fixed;
+	/* background: url(../img/big_image.jpg)  repeat-y top center fixed; */
+	background: url(../img/big_image2_red.jpg)  repeat-y top center fixed;
+	/* origem da imagem https://ununsplash.imgix.net/uploads/1413387158190559d80f7/6108b580?q=75&fm=jpg&s=d1c3df390a81d3371d05730a396ca390 */
 	width: 100%;
 	height: 100%;
 	margin: 0 auto;
@@ -611,7 +613,7 @@ z-index:1;
 	font-family: 'Lato', sans-serif;
 	font-size: 52px; 
 	font-weight: 400;
-	color: #777;
+	color: #aaa;
 	line-height: 0px;
 	letter-spacing: 0px;
 	text-transform: lowercase;
@@ -936,9 +938,9 @@ input { outline:none; }
 	width:100%;
 	clear:both; 	
 }
-#contact h2 { color:#f0f0f0; line-height:40px;}
-#contact a { color:#444; }
-#contact a:hover { color:#f0f0f0; }
+#contato h2 { color:#f0f0f0; line-height:40px;}
+#contato a { color:#444; }
+#contato a:hover { color:#f0f0f0; }
 .inverse { color:#444; }
 
 /*--------------------------------*/
