@@ -1,0 +1,9 @@
+.logo {
+    /* font-family: 'Lobster Two', cursive; */
+    font-family: 'Comfortaa', cursive;
+}
+
+#logo .logo {
+    font-size: 32px;
+    font-weight: bold;
+}
