@@ -21,44 +21,6 @@ if [ ! -d "venv" ]; then
   echo "sudo aptitude install postgresql-9.4 postgresql-contrib-9.4 postgresql-9.4-postgis postgresql-server-dev-9.4 libpq-dev binutils libproj-dev gdal-bin python-gdal python-psycopg2"
   sudo aptitude install postgresql-9.4 postgresql-contrib-9.4 postgresql-9.4-postgis-2.1 postgresql-9.4-postgis-2.1-scripts postgresql-server-dev-9.4 libpq-dev binutils libproj-dev gdal-bin python-gdal python-psycopg2
 
-  #This commented code below is for installing geo dependencies from source. Not needed.
-  #echo "Installing GEOS"
-  #if [ ! -d "temp" ]; then
-    #mkdir "temp"
-  #fi
-  #cd temp
-  #wget http://download.osgeo.org/geos/geos-3.3.8.tar.bz2
-  #tar xjf geos-3.3.8.tar.bz2
-  #cd geos-3.3.8
-  #./configure
-  #make
-  #sudo make install
-  #cd ..
-
-  #echo "Installing PROJ.4"
-  #wget http://download.osgeo.org/proj/proj-4.8.0.tar.gz
-  #wget http://download.osgeo.org/proj/proj-datumgrid-1.5.tar.gz
-  #tar xzf proj-4.8.0.tar.gz
-  #cd proj-4.8.0/nad
-  #tar xzf ../../proj-datumgrid-1.5.tar.gz
-  #cd ..
-  #./configure
-  #make
-  #sudo make install
-  #cd ..
-
-  #echo "Installing GDAL"
-  #wget http://download.osgeo.org/gdal/gdal-1.9.2.tar.gz
-  #tar xzf gdal-1.9.2.tar.gz
-  #cd gdal-1.9.2
-  #./configure
-  #make
-  #sudo make install
-  #cd ..
-
-  #cd ..
-  #rm -rf temp
-
   echo "Creating trilhasp db user"
   sudo -u postgres createuser trilhasp
 
@@ -100,7 +62,3 @@ cd trilhasp
 python manage.py syncdb
 python manage.py makemigrations
 python manage.py migrate
-
-#echo "Instalando dependências do projeto"
-#echo "Python social auth"
-#pip install python-social-auth
