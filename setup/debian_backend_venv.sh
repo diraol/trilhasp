@@ -11,6 +11,13 @@ if [ "$curdir" == "setup" ]; then
   cd ..
 fi
 
+#First check if the settings.py file from the project has already been created so the script can use it
+if [ ! -f 'trilhasp/trilhasp/trilhasp/settings.py']; then
+  echo "Please, first create the settings.py file on trilhasp/trilhasp/trilhasp/ directory so the script can use it"
+  echo "Ending the script while the file is not created"
+  exit 0
+fi
+
 if [ ! -d "venv" ]; then
 
   echo "Installing Virtual env prerequisites"
@@ -20,6 +27,9 @@ if [ ! -d "venv" ]; then
   echo "Installing system database dependencies"
   echo "sudo aptitude install postgresql-9.4 postgresql-contrib-9.4 postgresql-9.4-postgis postgresql-server-dev-9.4 libpq-dev binutils libproj-dev gdal-bin python-gdal python-psycopg2"
   sudo aptitude install postgresql-9.4 postgresql-contrib-9.4 postgresql-9.4-postgis-2.1 postgresql-9.4-postgis-2.1-scripts postgresql-server-dev-9.4 libpq-dev binutils libproj-dev gdal-bin python-gdal python-psycopg2
+
+  echo "Installing nginx"
+  sudo aptitude install nginx
 
   echo "Creating trilhasp db user"
   sudo -u postgres createuser trilhasp
@@ -59,6 +69,7 @@ pip install -r requirements.txt
 
 echo "Seting up database"
 cd trilhasp
+echo "Current dir: $curdir"
 python manage.py syncdb
 python manage.py makemigrations
 python manage.py migrate
