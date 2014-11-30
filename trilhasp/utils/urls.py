@@ -4,6 +4,7 @@ from rest_framework import routers
 from .views import *
 from evaluation.views import *
 from demandmap.views import *
+from game.views import *
 
 router = routers.DefaultRouter()
 router.register(r'user', UserView)
@@ -15,6 +16,12 @@ router.register(r'evaluation/question', EVALQuestionViewSet)
 router.register(r'evaluation/answer', EVALAnswerViewSet)
 router.register(r'position/last', GEOLastPositionViewSet)
 router.register(r'position/history', GEOHistoryPositionViewSet)
+router.register(r'game/coin/model', GameCoinModelViewSet)
+router.register(r'game/bus/brand', GameBusBrandViewSet)
+router.register(r'game/bus/model', GameBusModelViewSet)
+router.register(r'game/bus/availability', GameBusAvailabilityViewSet)
+router.register(r'game/fleet', GamePersonalBusFleetViewSet)
+router.register(r'game/finance', GameFinanceViewSet)
 
 urlpatterns = [
     url(r'', include(router.urls)),
