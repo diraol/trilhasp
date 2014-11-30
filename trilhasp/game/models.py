@@ -41,14 +41,14 @@ class GameFinance(models.Model):
         unique_together = ('user', 'coin_model')
 
     def __unicode__(self):
-        return self.user.name + " (" + self.coin_model.name + ")"
+        return self.user.username + " (" + self.coin_model.name + ")"
 
 
 def get_busbrand_logo_path(instance, filename):
     return os.path.join('images', 'brandlogos', filename)
 
 
-class BusBrand(models.Model):
+class GameBusBrand(models.Model):
     #MERCEDES = "Merc"
     #CAIO = "Caio"
     #BRANDS = (
@@ -68,8 +68,7 @@ class GameBusModel(models.Model):
     """Class with buses models. These are the buses that the users are going to buy to build their own fleet.
         Attributes:
             name -- string -- name of bus model
-            model -- string -- choice of bus model
-            brand -- string -- choice of bus brand
+            bus_brand -- string -- choice of bus brand
             efficiency -- int -- quantidade de moedas produzidas por esse modelo por unidade de tempo
             price -- int -- preço de uma unidade desse modelo de ônibus.
         Métodos:
@@ -102,7 +101,7 @@ class GameBusModel(models.Model):
     #    ("Z", "ALONGADO I"),
     #)
     name = models.CharField(max_length=30)
-    bus_brand = models.ManyToManyField(BusBrand, related_name='models')
+    bus_brand = models.ForeignKey(GameBusBrand, related_name='models')
     efficiency = models.PositiveIntegerField(blank=False)  # rendimento / yield
     price = models.PositiveIntegerField(blank=False)
 
@@ -124,16 +123,16 @@ class GamePersonalBusFleet(models.Model):
             user -- (fk)
             bus_model -- tipo do ônibus pessoal (fk)
             amount -- int -- número de ônibus que o usuário possui daquele modelo
-            time_to_return -- remaining time for the fleet to git coins back to the owner
+            last_payment -- last payment made to this fleep
         Methods:
     """
     user = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='bus_fleet')
     bus_model = models.ForeignKey("GameBusModel")
     amount = models.PositiveIntegerField(blank=False)
-    last_payment = models.DateTimeField()
+    last_payment = models.DateTimeField(auto_now=True)
 
     class Meta:
         unique_together = ('user', 'bus_model')
 
     def __unicode__(self):
-        return self.user + " (" + self.bus_model.name + ")"
+        return self.user.username + " (" + self.bus_model.name + ")"
