@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from rest_framework import permissions
-
+import pdb
 
 class IsStaffOrTargetUser(permissions.BasePermission):
     def has_permission(self, request, view):
@@ -10,9 +10,4 @@ class IsStaffOrTargetUser(permissions.BasePermission):
     def has_object_permission(self, request, view, obj):
         # allow logged in user to view own details, allows staff to view all records
         return request.user.is_staff or request.user == obj
-
-
-#def welcome_new_user(backend, *args, **kwargs):
-#    print(kwargs)
-#    pass
 
