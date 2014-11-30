@@ -1,3 +1,4 @@
+#-*- coding: utf-8 -*-
 """
 Django settings for trilhasp project.
 
@@ -11,7 +12,6 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
@@ -30,13 +30,25 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = (
-    'django.contrib.admin',
-    'django.contrib.auth',
+    'django.contrib.admin',  # fornece um painel de administração
+    'django.contrib.auth',  # fornece recursos de login padronizado
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.gis',  # fornece recursos geoespaciais
+    'evaluation',  # app de avaliação dos ônibus
+    'game',  # app de game do projeto
+    'demandmap',  # app de mapa "GPS Social"
+    'rest_framework',  # framework para disponibilização de uma API REST
+    'utils',  # app criado para códigos gerais do projeto
+    'social.apps.django_app.default',  # fornece recurso de login social
 )
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': ('rest_framework.permissions.IsAuthenticatedOrReadOnly',),
+    'PAGINATE_BY': 10
+}
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -46,7 +58,90 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    #abaixo é um middleware da classe python-social-auth
+    'social.apps.django_app.middleware.SocialAuthExceptionMiddleware',
 )
+
+TEMPLATE_CONTEXT_PROCESSORS = (
+    'django.contrib.auth.context_processors.auth',
+    'django.core.context_processors.debug',
+    'django.core.context_processors.i18n',
+    'django.core.context_processors.media',
+    'django.core.context_processors.static',
+    'django.core.context_processors.tz',
+    'django.contrib.messages.context_processors.messages',
+     #abaixo temos processors da classe python-social-auth
+    'social.apps.django_app.context_processors.backends',
+    'social.apps.django_app.context_processors.login_redirect',
+)
+
+AUTHENTICATION_BACKENDS = (
+   'social.backends.facebook.FacebookOAuth2',
+   'social.backends.google.GoogleOAuth2',
+   #'social.backends.twitter.TwitterOAuth',
+   'django.contrib.auth.backends.ModelBackend',
+)
+
+SOCIAL_AUTH_PIPELINE = (
+    # Get the information we can about the user and return it in a simple
+    # format to create the user instance later. On some cases the details are
+    # already part of the auth response from the provider, but sometimes this
+    # could hit a provider API.
+    'social.pipeline.social_auth.social_details',
+    # Get the social uid from whichever service we're authing thru. The uid is
+    # the unique identifier of the given user in the provider.
+    'social.pipeline.social_auth.social_uid',
+    # Verifies that the current auth process is valid within the current
+    # project, this is were emails and domains whitelists are applied (if
+    # defined).
+    'social.pipeline.social_auth.auth_allowed',
+    # Checks if the current social-account is already associated in the site.
+    'social.pipeline.social_auth.social_user',
+    # Make up a username for this person, appends a random string at the end if
+    # there's any collision.
+    'social.pipeline.user.get_username',
+    # Send a validation email to the user to verify its email address.
+    # Disabled by default.
+    # 'social.pipeline.mail.mail_validation',
+    # Associates the current social details with another user account with
+    # a similar email address. Disabled by default.
+    'social.pipeline.social_auth.associate_by_email',
+    # Create a user account if we haven't found one yet.
+    'social.pipeline.user.create_user',
+    # Create the record that associated the social account with this user.
+    'social.pipeline.social_auth.associate_user',
+    # Populate the extra_data field in the social record with the values
+    # specified by settings (and the default ones like access_token, etc).
+    'social.pipeline.social_auth.load_extra_data',
+    # Update the user record with any changed info from the auth service.
+    'social.pipeline.user.user_details',
+)
+
+# Campos verificados para realização de login
+SOCIAL_AUTH_ADMIN_USER_SEARCH_FIELDS = ['username', 'email', 'first_name']
+
+# FacebookSocial
+SOCIAL_AUTH_FACEBOOK_KEY = ""
+SOCIAL_AUTH_FACEBOOK_SECRET = ""
+# solicita que o facebook envie também o email do usuário ao realizar login
+SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
+FACEBOOK_AUTH_EXTRA_ARGUMENTS = {'display': 'touch'}
+
+# GoogleSocialLogin
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = ""
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = ""
+
+# TwitterSocialLogin
+# SOCIAL_AUTH_TWITTER_KEY = ""
+# SOCIAL_AUTH_TWITTER_SECRET = ""
+
+
+
+# For login to work, let’s first add a LOGIN_REDIRECT_URL parameter to settings
+# (to prevent the default /account/profile from raising a 404
+LOGIN_REDIRECT_URL = '/'
+
+# SocialLogin reference: http://www.artandlogic.com/blog/2014/04/tutorial-adding-facebooktwittergoogle-authentication-to-a-django-application/
 
 ROOT_URLCONF = 'trilhasp.urls'
 
@@ -58,14 +153,19 @@ WSGI_APPLICATION = 'trilhasp.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
+        'ENGINE': 'django.contrib.gis.db.backends.postgis',
         'NAME': '',
         'USER': '',
         'PASSWORD': '',
-        #'HOST': '',
+        'HOST': '',
         #'PORT': '',
     }
 }
+#POSTGIS VERSION
+POSTGIS_VERSION = (2, 1)
+
+#GeoIP PATH
+GEOIP_PATH = os.path.join(BASE_DIR, 'geoip')
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
@@ -84,4 +184,5 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
