@@ -28,9 +28,6 @@ if [ ! -d "venv" ]; then
   echo "sudo aptitude install postgresql-9.4 postgresql-contrib-9.4 postgresql-9.4-postgis postgresql-server-dev-9.4 libpq-dev binutils libproj-dev gdal-bin python-gdal python-psycopg2"
   sudo aptitude install postgresql-9.4 postgresql-contrib-9.4 postgresql-9.4-postgis-2.1 postgresql-9.4-postgis-2.1-scripts postgresql-server-dev-9.4 libpq-dev binutils libproj-dev gdal-bin python-gdal python-psycopg2
 
-  echo "Installing nginx"
-  sudo aptitude install nginx
-
   echo "Creating trilhasp db user"
   sudo -u postgres createuser trilhasp
 
@@ -73,3 +70,9 @@ echo "Current dir: $curdir"
 python manage.py syncdb
 python manage.py makemigrations
 python manage.py migrate
+
+echo ""
+echo ""
+echo "==========================================================================="
+echo "Dev Installation completed"
+echo "The production installation requires you to configure the production settings.py file and setup the uwsgi and nginx files also"
