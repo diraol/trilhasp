@@ -1,0 +1,3 @@
+[submodule "mobileapp"]
+	path = mobileapp
+	url = https://github.com/diraol/trilhasp-mobile.git
