@@ -6,7 +6,7 @@ from .serializers import *
 from .util import IsStaffOrTargetUser
 from django.contrib.auth.models import User
 from rest_framework import permissions
-from oauth2_provider.ext.rests_framework import TokenHasReadWriteScope, TokenHasScope
+from oauth2_provider.ext.rest_framework import TokenHasReadWriteScope, TokenHasScope
 
 ###############################################################################
 ##                     Classes for the Users                                 ##
