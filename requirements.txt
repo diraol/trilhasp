@@ -8,4 +8,4 @@ djangorestframework-gis
 uwsgi
 django-suit
 django-cors-headers
-djangorestframework-jwt
+django-oauth-toolkit

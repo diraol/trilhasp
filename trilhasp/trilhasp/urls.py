@@ -3,6 +3,7 @@ from django.conf.urls import patterns, include, url
 from django.contrib import admin
 from rest_framework import routers
 
+
 urlpatterns = patterns('',
     # Examples:
     # url(r'^$', 'trilhasp.views.home', name='home'),
@@ -16,4 +17,5 @@ urlpatterns = patterns('',
     url(r'^$', 'evaluation.views.home', name='home'),  # to test social AUTH
     url('', include('social.apps.django_app.urls', namespace='social')),
     url('', include('django.contrib.auth.urls', namespace='auth')),
+    url(r'^o/', include('oauth2_provider.urls', namespace='oauth2_provider')),
 )
