@@ -54,7 +54,7 @@ class EVALAnswerModelSerializer(serializers.HyperlinkedModelSerializer):
 class EVALQuestionSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = EVALQuestion
-        fields = ('question', 'answer', 'enabled')
+        fields = ('id','question', 'answer', 'enabled')
 
 
 class EVALAnswerSerializer(serializers.HyperlinkedModelSerializer):
