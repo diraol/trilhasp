@@ -22,7 +22,6 @@ router.register(r'game/bus/model', GameBusModelViewSet)
 router.register(r'game/bus/availability', GameBusAvailabilityViewSet)
 router.register(r'game/fleet', GamePersonalBusFleetViewSet)
 router.register(r'game/finance', GameFinanceViewSet)
-router.register(r'users', UserViewSet)
 
 urlpatterns = [
     url(r'', include(router.urls)),

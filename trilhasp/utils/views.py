@@ -23,7 +23,3 @@ class UserView(viewsets.ModelViewSet):
         # allow non-authenticated user to create via POST
         return (AllowAny() if self.request.method == 'POST'
                 else IsStaffOrTargetUser()),
-
-class UserViewSet(viewsets.ModelViewSet):
-    permission_classes = [permissions.IsAuthenticated, TokenHasReqdWriteScope]
-    model = User
