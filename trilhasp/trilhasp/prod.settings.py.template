@@ -46,11 +46,17 @@ INSTALLED_APPS = (
     'utils',
     'social.apps.django_app.default',
     'corsheaders',
+    'oauth2_provider',
 )
+
+OAUTH2_PROVIDER = {
+    'SCOPES': {'read': 'Read scope', 'write': 'Write scope', 'groups': 'Access to your groups'}
+}
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': ('rest_framework.permissions.IsAuthenticatedOrReadOnly',),
     'DEFAULT_AUTHENTICATION_CLASSES': (
+        'oauth2_provider.ext.rest_framework.OAuth2Authentication',
         'rest_framework.authentication.SessionAuthentication',
         'rest_framework.authentication.BasicAuthentication',
         #'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
@@ -135,7 +141,6 @@ SOCIAL_AUTH_PIPELINE = (
 
     # Associates the current social details with another user account with
     # a similar email address. Disabled by default.
-    #'utils.util.welcome_new_user',
     'social.pipeline.social_auth.associate_by_email',
 
     # Create a user account if we haven't found one yet.
