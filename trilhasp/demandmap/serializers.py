@@ -48,6 +48,7 @@ class GEOHistoryPositionSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = GEOHistoryPosition
+        geo_field = "geolocation"
         fields = (
             'user',
             'geolocation',
