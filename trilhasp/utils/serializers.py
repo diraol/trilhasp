@@ -13,7 +13,7 @@ class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ('username', 'password', 'first_name', 'last_name', 'email')
+        fields = ('id','username', 'password', 'first_name', 'last_name', 'email')
         write_only_fields = ('password',)
         lookup_field = 'username'
 
