@@ -40,7 +40,8 @@ class GEOLastAnonPositionSerializer(GeoFeatureModelSerializer):
         read_only_fields = ('timestamp',)
 
 
-class GEOHistoryPositionSerializer(serializers.HyperlinkedModelSerializer):
+class GEOHistoryPositionSerializer(GeoFeatureModelSerializer):
+    id = serializers.Field()
     user = serializers.HyperlinkedRelatedField(
         view_name='user-detail',
         lookup_field='username'
@@ -50,6 +51,7 @@ class GEOHistoryPositionSerializer(serializers.HyperlinkedModelSerializer):
         model = GEOHistoryPosition
         geo_field = "geolocation"
         fields = (
+            'id',
             'user',
             'geolocation',
             'timestamp'
