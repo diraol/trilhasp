@@ -37,3 +37,7 @@ nosetests.xml
 venv
 settings.py
 .idea
+
+trilhasp/images/*
+trilhasp/media/*
+trilhasp/static/*
