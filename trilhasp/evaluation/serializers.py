@@ -22,10 +22,10 @@ class BusLineSerializer(serializers.HyperlinkedModelSerializer):
 
 
 class BusesSerializer(serializers.HyperlinkedModelSerializer):
-    bus_line_code = serializers.HyperlinkedRelatedField(
-        view_name='bus-line',
-        lookup_field='bus_line_code'
-    )
+    #bus_line_code = serializers.HyperlinkedRelatedField(
+    #    view_name='bus-line',
+    #    lookup_field='bus_line_code'
+    #)
 
     class Meta:
         model = Buses
