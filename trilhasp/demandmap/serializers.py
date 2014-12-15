@@ -42,10 +42,6 @@ class GEOLastAnonPositionSerializer(GeoFeatureModelSerializer):
 
 class GEOHistoryPositionSerializer(GeoFeatureModelSerializer):
     id = serializers.Field()
-    user = serializers.HyperlinkedRelatedField(
-        view_name='user-detail',
-        lookup_field='username'
-    )
 
     class Meta:
         model = GEOHistoryPosition
